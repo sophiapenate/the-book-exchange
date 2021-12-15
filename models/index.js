@@ -2,22 +2,22 @@ const User = require("./User");
 const Genre = require("./Genre");
 const Author = require("./Author");
 const Book = require("./Book");
-// const Offer  = require("./Offer");
+const Offer = require("./Offer");
 
 Author.hasMany(Book, {
   foreignKey: "author_id",
 });
 
 Book.belongsTo(Author, {
-    foreignKey: "author_id",
+  foreignKey: "author_id",
 });
 
 Genre.hasMany(Book, {
-    foreignKey: "genre_id",
-  });
-  
+  foreignKey: "genre_id",
+});
+
 Book.belongsTo(Genre, {
-    foreignKey: "genre_id",
+  foreignKey: "genre_id",
 });
 
 module.exports = {
@@ -25,4 +25,5 @@ module.exports = {
   Genre,
   Author,
   Book,
+  Offer,
 };

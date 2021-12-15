@@ -12,7 +12,7 @@ User.init(
       autoIncrement: true,
     },
     username: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(30),
       allowNull: false,
       unique: true,
       validate: {
@@ -25,11 +25,11 @@ User.init(
       validate: { len: [6] },
     },
     first_name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(30),
       allowNull: false,
     },
     last_name: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(30),
       allowNull: false,
     },
     email: {
@@ -39,7 +39,14 @@ User.init(
       validate: { isEmail: true },
     },
     phone: {
-        type: DataTypes.STRING
+      type: DataTypes.STRING(30),
+    },
+    favorite_genre_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: "genre",
+        key: "id",
+      },
     },
   },
   {
