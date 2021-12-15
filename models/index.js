@@ -1,9 +1,10 @@
 const User = require("./User");
-// const Genre = ("./Genre");
-// const Author = ("./Author");
-// const Book = ("./Book");
-// const Offer  = ("./Offer");
+const Genre = require("./Genre");
+// const Author = require("./Author");
+// const Book = require("./Book");
+// const Offer  = require("./Offer");
 
 module.exports = {
-    User
-}
+  User,
+  Genre,
+};
