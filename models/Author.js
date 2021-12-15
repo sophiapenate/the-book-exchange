@@ -12,12 +12,12 @@ Author.init(
       autoIncrement: true,
     },
     first_name: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true,
     },
     last_name: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
       allowNull: false,
       unique: true,
     },
@@ -27,7 +27,7 @@ Author.init(
     timestamps: false,
     freezeTableName: true,
     underscored: true,
-    modelName: "genre",
+    modelName: "author",
   }
 );
 
