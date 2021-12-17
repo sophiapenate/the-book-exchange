@@ -33,10 +33,12 @@ Book.belongsTo(Genre, {
 
 // User to Genre Associations
 Genre.hasMany(User, {
+  as: "favorite_genre",
   foreignKey: "favorite_genre_id",
 });
 
 User.belongsTo(Genre, {
+  as: "favorite_genre",
   foreignKey: "favorite_genre_id",
 });
 
