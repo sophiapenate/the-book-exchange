@@ -1,3 +1,5 @@
+const { Genre } = require("../models");
+
 const router = require("express").Router();
 
 router.get("/", (req, res) => {
@@ -27,7 +29,17 @@ router.get("/signup", (req, res) => {
     res.redirect("/");
     return;
   }
-  res.render("signup");
+
+  Genre.findAll({
+    order: [["name", "ASC"]],
+  })
+    .then(genreData => {
+      //serialize genreData
+      const genres = genreData.map((genre) => genre.get({ plain: true }));
+      console.log(genres);
+      // render signup page and send genres for favorite genre dropdown
+      res.render("signup", { genres });
+    });
 });
 
 module.exports = router;

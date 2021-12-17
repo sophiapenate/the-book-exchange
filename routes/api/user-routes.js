@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const e = require("express");
 const { User, Book, Author, Genre } = require("../../models");
 
 router.get("/", (req, res) => {
