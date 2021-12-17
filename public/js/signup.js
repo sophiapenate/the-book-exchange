@@ -15,6 +15,29 @@ async function signupFormHandler(e) {
     "#renter_password_input"
   ).value;
 
+  // create user object
+  let userObj;
+  if (favorite_genre_id === "") {
+    userObj = {
+      first_name,
+      last_name,
+      email,
+      phone,
+      username,
+      password,
+    };
+  } else {
+    userObj = {
+      first_name,
+      last_name,
+      email,
+      phone,
+      favorite_genre_id,
+      username,
+      password,
+    };
+  }
+
   // check if user included all required fields and matching passwords
   if (
     first_name &&
@@ -26,15 +49,7 @@ async function signupFormHandler(e) {
   ) {
     const response = await fetch("/api/users", {
       method: "POST",
-      body: JSON.stringify({
-        first_name,
-        last_name,
-        email,
-        phone,
-        favorite_genre_id,
-        username,
-        password,
-      }),
+      body: JSON.stringify(userObj),
       headers: { "Content-Type": "application/json" },
     });
 
