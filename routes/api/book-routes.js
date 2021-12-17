@@ -1,8 +1,24 @@
 const router = require("express").Router();
-const { User, Book, Author, Genre } = require("../../models");
+const { Book, User, Author, Genre } = require("../../models");
 
 router.get("/", (req, res) => {
-  User.findAll()
+  Book.findAll({
+    order: [['created_at', 'DESC']],
+    include: [
+      {
+        model: User,
+        attributes: ['username'],
+      },
+      {
+        model: Author,
+        attributes: ['first_name', 'last_name']
+      },
+      {
+        model: Genre,
+        attributes: ['name']
+      }
+    ]
+  })
     .then((dbData) => {
       res.json(dbData);
     })
@@ -13,31 +29,30 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  User.findOne({
+  Book.findOne({
     where: {
       id: req.params.id,
     },
     include: [
-        {
-          model: Book,
-          include: [
-            {
-              model: Author,
-              attributes: ['first_name', 'last_name'],
-            },
-            {
-              model: Genre,
-              attributes: ['name']
-            }
-          ]
-        }
-      ]
+      {
+        model: User,
+        attributes: ['username'],
+      },
+      {
+        model: Author,
+        attributes: ['first_name', 'last_name']
+      },
+      {
+        model: Genre,
+        attributes: ['name']
+      }
+    ]
   })
     .then((dbData) => {
       if (!dbData) {
         res
           .status(404)
-          .json({ message: `No user found with id ${req.params.id}.` });
+          .json({ message: `No book found with id ${req.params.id}.` });
       } else {
         res.json(dbData);
       }
@@ -49,7 +64,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  User.create(req.body)
+  Book.create(req.body)
     .then((dbData) => {
       res.json(dbData);
     })
@@ -60,14 +75,14 @@ router.post("/", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  User.destroy({
+  Book.destroy({
     where: {
       id: req.params.id,
     },
   })
     .then((dbData) => {
       if (!dbData) {
-        res.status(404).json({ message: `No user found with id ${req.params.id}.` });
+        res.status(404).json({ message: `No book found with id ${req.params.id}.` });
         return;
       }
       res.json(dbData);

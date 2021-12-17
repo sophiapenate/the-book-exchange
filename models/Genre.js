@@ -12,7 +12,7 @@ Genre.init(
       autoIncrement: true,
     },
     name: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING(30),
       allowNull: false,
       unique: true,
     },
