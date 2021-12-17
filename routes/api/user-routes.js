@@ -82,9 +82,16 @@ router.post("/login", (req, res) => {
     .then((dbData) => {
       if (!dbData) {
         res.status(404).json({ message: "Username not found!" });
-      } else {
-        res.json({ user: dbData, message: "You are now logged in!" });
+        return;
       }
+
+      const validPw = dbData.checkPw(req.body.password);
+      if (!validPw) {
+        res.status(400).json({ message: "Incorrect password!" });
+        return;
+      }
+      
+      res.json({ user: dbData, message: "You are now logged in!" });
     })
     .catch();
 });

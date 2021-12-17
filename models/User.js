@@ -2,7 +2,11 @@ const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
 const bcrypt = require("bcrypt");
 
-class User extends Model {}
+class User extends Model {
+  checkPw(loginPw) {
+    return bcrypt.compareSync(loginPw, this.password);
+  }
+}
 
 User.init(
   {
@@ -52,6 +56,13 @@ User.init(
   },
   {
     hooks: {
+      beforeBulkCreate(users) {
+        for (const user of users) {
+          bcrypt.hash(user.password, 10).then((hashedPw) => {
+            user.password = hashedPw;
+          });
+        }
+      },
       beforeCreate(user) {
         return bcrypt.hash(user.password, 10).then((hashedPw) => {
           user.password = hashedPw;
@@ -61,13 +72,6 @@ User.init(
         return bcrypt.hash(user.password, 10).then((hashedPw) => {
           user.password = hashedPw;
         });
-      },
-      beforeBulkCreate(users, options) {
-        for (const user of users) {
-          return bcrypt.hash(user.password, 10).then((hashedPw) => {
-            user.password = hashedPw;
-          });
-        }
       },
     },
     sequelize,
