@@ -1,32 +1,44 @@
-const { Author } = require("../models");
+const { User } = require("../models");
 
-const authorData = [
+const userData = [
   {
     first_name: "Sophia",
-    last_name: "Card",
+    last_name: "Barrett",
+    email: "sophia@books.com",
+    phone: "123-456-7890",
+    favorite_genre_id: 1,
+    username: 'sophia',
+    password: 'password1234',
   },
   {
-    first_name: "Malcolm",
-    last_name: "Gladwell",
+    first_name: "Gabriel",
+    last_name: "Penate",
+    email: "gabe@books.com",
+    phone: "123-456-7890",
+    favorite_genre_id: 6,
+    username: 'gabe',
+    password: 'password1234',
   },
   {
-    first_name: "Jon",
-    last_name: "Krakauer",
+    first_name: "Catrick",
+    last_name: "Swayze",
+    email: "catrick@books.com",
+    phone: "123-456-7890",
+    favorite_genre_id: 11,
+    username: 'catrick',
+    password: 'password1234',
   },
   {
-    first_name: "F. Scott",
-    last_name: "Fitzgerald",
-  },
-  {
-    first_name: "Rebecca",
-    last_name: "Skloot",
-  },
-  {
-    first_name: "J.D.",
-    last_name: "Salinger",
+    first_name: "Kity",
+    last_name: "Perry",
+    email: "kity@books.com",
+    phone: "123-456-7890",
+    favorite_genre_id: 7,
+    username: 'kity',
+    password: 'password1234',
   },
 ];
 
-const seedAuthors = () => Author.bulkCreate(authorData);
+const seedUsers = () => User.bulkCreate(userData);
 
-module.exports = seedAuthors;
+module.exports = seedUsers;
