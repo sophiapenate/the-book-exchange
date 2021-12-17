@@ -3,6 +3,9 @@ const { User, Book, Author, Genre } = require("../../models");
 
 router.get("/", (req, res) => {
   User.findAll({
+    attributes: {
+      exclude: ["password"],
+    },
     include: [
       {
         model: Genre,
@@ -24,6 +27,9 @@ router.get("/:id", (req, res) => {
   User.findOne({
     where: {
       id: req.params.id,
+    },
+    attributes: {
+      exclude: ["password"],
     },
     include: [
       {
