@@ -1,0 +1,16 @@
+
+.uk-navbar-container{
+    background-color: #bc4a4a !important;
+    margin-bottom: 0px;
+}
+.uk-logo, .uk-navbar-toggle, .uk-search-input::placeholder, .uk-search-input, .uk-navbar-nav a{
+    color: #F6EDDD !important;
+}
+
+.uk-active a{
+    background-color: #F19C43;
+    border-radius: 10px;
+    height:40px !important;
+    min-height: 0px !important;
+    margin-top: 20px;
+}
