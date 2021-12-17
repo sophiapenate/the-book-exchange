@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Genre } = require("../../models");
+const { Genre, Book, Author, User } = require("../../models");
 
 router.get("/", (req, res) => {
   Genre.findAll()
@@ -17,6 +17,21 @@ router.get("/:id", (req, res) => {
     where: {
       id: req.params.id,
     },
+    include: [
+      {
+        model: Book,
+        include: [
+          {
+            model: Author,
+            attributes: ['first_name', 'last_name'],
+          },
+          {
+            model: User,
+            attributes: ['username']
+          }
+        ]
+      }
+    ]
   })
     .then((dbData) => {
       if (!dbData) {
