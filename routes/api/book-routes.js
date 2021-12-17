@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Book, User, Author, Genre } = require("../../models");
+const { Book, User, Author, Genre, Offer } = require("../../models");
 
 router.get("/", (req, res) => {
   Book.findAll({
@@ -45,6 +45,15 @@ router.get("/:id", (req, res) => {
       {
         model: Genre,
         attributes: ['name']
+      },
+      {
+        model: Offer,
+        include: [
+          {
+            model: User,
+            attributes: ['username']
+          }
+        ]
       }
     ]
   })
