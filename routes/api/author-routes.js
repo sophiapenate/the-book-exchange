@@ -2,7 +2,9 @@ const router = require("express").Router();
 const { Author, Book, User, Genre } = require("../../models");
 
 router.get("/", (req, res) => {
-  Author.findAll()
+  Author.findAll({
+    order: [["last_name", "ASC"]],
+  })
     .then((dbData) => {
       res.json(dbData);
     })
