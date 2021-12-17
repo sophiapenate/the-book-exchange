@@ -18,20 +18,20 @@ router.get("/:id", (req, res) => {
       id: req.params.id,
     },
     include: [
-        {
-          model: Book,
-          include: [
-            {
-              model: Author,
-              attributes: ['first_name', 'last_name'],
-            },
-            {
-              model: Genre,
-              attributes: ['name']
-            }
-          ]
-        }
-      ]
+      {
+        model: Book,
+        include: [
+          {
+            model: Author,
+            attributes: ["first_name", "last_name"],
+          },
+          {
+            model: Genre,
+            attributes: ["name"],
+          },
+        ],
+      },
+    ],
   })
     .then((dbData) => {
       if (!dbData) {
@@ -59,6 +59,22 @@ router.post("/", (req, res) => {
     });
 });
 
+router.post("/login", (req, res) => {
+  User.findOne({
+    where: {
+      username: req.body.username,
+    },
+  })
+    .then((dbData) => {
+      if (!dbData) {
+        res.status(404).json({ message: "Username not found!" });
+      } else {
+        res.json({ user: dbData, message: "You are now logged in!" });
+      }
+    })
+    .catch();
+});
+
 router.delete("/:id", (req, res) => {
   User.destroy({
     where: {
@@ -67,7 +83,9 @@ router.delete("/:id", (req, res) => {
   })
     .then((dbData) => {
       if (!dbData) {
-        res.status(404).json({ message: `No user found with id ${req.params.id}.` });
+        res
+          .status(404)
+          .json({ message: `No user found with id ${req.params.id}.` });
         return;
       }
       res.json(dbData);
