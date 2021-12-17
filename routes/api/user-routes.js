@@ -1,4 +1,5 @@
 const router = require("express").Router();
+const e = require("express");
 const { User, Book, Author, Genre } = require("../../models");
 
 router.get("/", (req, res) => {
@@ -97,6 +98,16 @@ router.post("/login", (req, res) => {
       res.json({ user: dbData, message: "You are now logged in!"});
     });
   });
+});
+
+router.post("/logout", (req, res) => {
+  if (req.session.loggedIn) {
+    req.session.destroy(() => {
+      res.status(204).end();
+    });
+  } else {
+    res.status(404).end();
+  }
 });
 
 router.delete("/:id", (req, res) => {
