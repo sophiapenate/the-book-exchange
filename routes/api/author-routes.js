@@ -1,8 +1,8 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { Author } = require("../../models");
 
 router.get("/", (req, res) => {
-  User.findAll()
+  Author.findAll()
     .then((dbData) => {
       res.json(dbData);
     })
@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  User.findOne({
+  Author.findOne({
     where: {
       id: req.params.id,
     },
@@ -22,7 +22,7 @@ router.get("/:id", (req, res) => {
       if (!dbData) {
         res
           .status(404)
-          .json({ message: `No user found with id ${req.params.id}.` });
+          .json({ message: `No author found with id ${req.params.id}.` });
       } else {
         res.json(dbData);
       }
@@ -34,7 +34,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  User.create(req.body)
+  Author.create(req.body)
     .then((dbData) => {
       res.json(dbData);
     })
@@ -45,14 +45,14 @@ router.post("/", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  User.destroy({
+  Author.destroy({
     where: {
       id: req.params.id,
     },
   })
     .then((dbData) => {
       if (!dbData) {
-        res.status(404).json({ message: `No user found with id ${req.params.id}.` });
+        res.status(404).json({ message: `No author found with id ${req.params.id}.` });
         return;
       }
       res.json(dbData);
