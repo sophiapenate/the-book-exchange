@@ -1,10 +1,8 @@
 const router = require("express").Router();
-const { Genre, Book, Author, User } = require("../../models");
+const { Offer, Book, User, Author, Genre } = require("../../models");
 
 router.get("/", (req, res) => {
-  Genre.findAll({
-    order: [["name", "ASC"]],
-  })
+  Offer.findAll()
     .then((dbData) => {
       res.json(dbData);
     })
@@ -15,7 +13,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/:id", (req, res) => {
-  Genre.findOne({
+  Offer.findOne({
     where: {
       id: req.params.id,
     },
@@ -31,6 +29,10 @@ router.get("/:id", (req, res) => {
             model: Author,
             attributes: ["first_name", "last_name"],
           },
+          {
+            model: Genre,
+            attributes: ["name"],
+          },
         ],
       },
     ],
@@ -39,7 +41,7 @@ router.get("/:id", (req, res) => {
       if (!dbData) {
         res
           .status(404)
-          .json({ message: `No genre found with id ${req.params.id}.` });
+          .json({ message: `No offer found with id ${req.params.id}.` });
       } else {
         res.json(dbData);
       }
@@ -51,7 +53,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  Genre.create(req.body)
+  Offer.create(req.body)
     .then((dbData) => {
       res.json(dbData);
     })
@@ -62,7 +64,7 @@ router.post("/", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
-  Genre.destroy({
+  Offer.destroy({
     where: {
       id: req.params.id,
     },
@@ -71,7 +73,7 @@ router.delete("/:id", (req, res) => {
       if (!dbData) {
         res
           .status(404)
-          .json({ message: `No genre found with id ${req.params.id}.` });
+          .json({ message: `No offer found with id ${req.params.id}.` });
         return;
       }
       res.json(dbData);
