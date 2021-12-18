@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const e = require("express");
 const { User, Book, Author, Genre } = require("../../models");
 
 router.get("/", (req, res) => {
@@ -66,7 +65,12 @@ router.get("/:id", (req, res) => {
 router.post("/", (req, res) => {
   User.create(req.body)
     .then((dbData) => {
-      res.json(dbData);
+      req.session.save(() => {
+        req.session.user_id = dbData.id;
+        req.session.username = dbData.username;
+        req.session.loggedIn = true;
+        res.json(dbData);
+      });
     })
     .catch((err) => {
       console.log(err);
