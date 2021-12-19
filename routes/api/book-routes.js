@@ -3,21 +3,21 @@ const { Book, User, Author, Genre, Offer } = require("../../models");
 
 router.get("/", (req, res) => {
   Book.findAll({
-    order: [['created_at', 'DESC']],
+    order: [["created_at", "DESC"]],
     include: [
       {
         model: User,
-        attributes: ['username'],
+        attributes: ["username"],
       },
       {
         model: Author,
-        attributes: ['first_name', 'last_name']
+        attributes: ["first_name", "last_name"],
       },
       {
         model: Genre,
-        attributes: ['name']
-      }
-    ]
+        attributes: ["name"],
+      },
+    ],
   })
     .then((dbData) => {
       res.json(dbData);
@@ -36,26 +36,26 @@ router.get("/:id", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ['username'],
+        attributes: ["username"],
       },
       {
         model: Author,
-        attributes: ['first_name', 'last_name']
+        attributes: ["first_name", "last_name"],
       },
       {
         model: Genre,
-        attributes: ['name']
+        attributes: ["name"],
       },
       {
         model: Offer,
         include: [
           {
             model: User,
-            attributes: ['username']
-          }
-        ]
-      }
-    ]
+            attributes: ["username"],
+          },
+        ],
+      },
+    ],
   })
     .then((dbData) => {
       if (!dbData) {
@@ -73,7 +73,16 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  Book.create(req.body)
+  Book.create({
+    title: req.body.title,
+    author_id: req.body.author_id,
+    genre_id: req.body.genre_id,
+    is_paperback: req.body.is_paperback,
+    condition: req.body.condition,
+    description: req.body.description,
+    is_available: req.body.is_available,
+    user_id: req.session.user_id,
+  })
     .then((dbData) => {
       res.json(dbData);
     })
@@ -91,7 +100,9 @@ router.delete("/:id", (req, res) => {
   })
     .then((dbData) => {
       if (!dbData) {
-        res.status(404).json({ message: `No book found with id ${req.params.id}.` });
+        res
+          .status(404)
+          .json({ message: `No book found with id ${req.params.id}.` });
         return;
       }
       res.json(dbData);

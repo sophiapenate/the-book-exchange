@@ -50,10 +50,39 @@ async function addBookFormHandler(e) {
   // get remaining user inputs
   const title = document.querySelector("#title_input").value.trim();
   const genre_id = document.querySelector("#genre_selection").value;
-  // const is_paperback =
-  // const condition =
-  // const description =
-  // const is_available =
+  const is_paperback = document.querySelector("#format_selection").value;
+  const condition = document.querySelector("#condition_selection").value;
+  const description = document.querySelector("#description_input").value;
+
+  // create book object
+  const bookObj = {
+    title,
+    author_id,
+    genre_id,
+    is_paperback,
+    condition,
+    is_available: 1,
+  };
+  if (description !== "") {
+    bookObj.description = description;
+  }
+
+  // check if user filled out all required fields
+  if (title && author_id && genre_id && is_paperback && condition) {
+    const createBookResponse = await fetch("/api/books", {
+        method: "POST",
+        body: JSON.stringify(bookObj),
+        headers: { "Content-Type": "application/json" },
+      });
+  
+      if (createBookResponse.ok) {
+        document.location.replace("/dashboard");
+      } else {
+        createBookResponse.json().then((data) => {
+          console.log(data.errors[0].message);
+        });
+      }
+  }
 }
 
 document
