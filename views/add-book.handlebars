@@ -15,7 +15,7 @@
   </div>
   <div>
     <label for="genre_selection">Genre</label>
-    <select id="genre_selection">
+    <select id="genre_selection" required>
       <option value="" disabled selected>Choose a genre</option>
       {{#each genres as |genre|}}
         <option value="{{genre.id}}">{{genre.name}}</option>
@@ -24,16 +24,16 @@
   </div>
   <div>
     <label for="format_selection">Format</label>
-    <select id="format_selection">
-      <option value="" disabled selected required>Choose one</option>
+    <select id="format_selection" required>
+      <option value="" disabled selected>Choose one</option>
         <option value="1">Paperback</option>
         <option value="0">Hardcover</option>
     </select>
   </div>
   <div>
     <label for="condition_selection">Condition</label>
-    <select id="condition_selection">
-      <option value="" disabled selected required>Choose one</option>
+    <select id="condition_selection" required>
+      <option value="" disabled selected>Choose one</option>
         <option value="Like New">Like New</option>
         <option value="Good">Good</option>
         <option value="Well-loved">Well-loved</option>

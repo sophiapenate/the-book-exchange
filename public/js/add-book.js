@@ -45,14 +45,11 @@ async function addBookFormHandler(e) {
   const author_last_name = document
     .querySelector("#author_last_name_input")
     .value.trim();
-  // check if author first and last names are not blank
   const author_id = await getAuthorId(author_first_name, author_last_name);
-  console.log(author_id);
 
-  // get user inputs
+  // get remaining user inputs
   const title = document.querySelector("#title_input").value.trim();
-
-  // const genre_id =
+  const genre_id = document.querySelector("#genre_selection").value;
   // const is_paperback =
   // const condition =
   // const description =
