@@ -3,15 +3,15 @@
 <form class="add-book-form">
   <div>
     <label for="title_input">Title</label>
-    <input type="text" id="title_input" maxlength="255" />
+    <input type="text" id="title_input" maxlength="255" required/>
   </div>
   <div>
     <label for="author_first_name_input">Author's First Name</label>
-    <input type="text" id="author_first_name_input" maxlength="255" />
+    <input type="text" id="author_first_name_input" maxlength="255" required/>
   </div>
   <div>
     <label for="author_last_name_input">Author's Last Name</label>
-    <input type="text" id="author_last_name_input" maxlength="255" />
+    <input type="text" id="author_last_name_input" maxlength="255" required />
   </div>
   <div>
     <label for="genre_selection">Genre</label>
@@ -25,7 +25,7 @@
   <div>
     <label for="format_selection">Format</label>
     <select id="format_selection">
-      <option value="" disabled selected>Choose one</option>
+      <option value="" disabled selected required>Choose one</option>
         <option value="1">Paperback</option>
         <option value="0">Hardcover</option>
     </select>
@@ -33,7 +33,7 @@
   <div>
     <label for="condition_selection">Condition</label>
     <select id="condition_selection">
-      <option value="" disabled selected>Choose one</option>
+      <option value="" disabled selected required>Choose one</option>
         <option value="Like New">Like New</option>
         <option value="Good">Good</option>
         <option value="Well-loved">Well-loved</option>
