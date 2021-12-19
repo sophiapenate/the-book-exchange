@@ -14,6 +14,22 @@ router.get("/", (req, res) => {
     });
 });
 
+router.get("/search", (req, res) => {
+  Author.findAll({
+    where: {
+      first_name: req.query.first_name,
+      last_name: req.query.last_name,
+    }
+  })
+    .then((dbData) => {
+      res.json(dbData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 router.get("/:id", (req, res) => {
   Author.findOne({
     where: {
@@ -25,15 +41,15 @@ router.get("/:id", (req, res) => {
         include: [
           {
             model: User,
-            attributes: ['username'],
+            attributes: ["username"],
           },
           {
             model: Genre,
-            attributes: ['name']
-          }
-        ]
-      }
-    ]
+            attributes: ["name"],
+          },
+        ],
+      },
+    ],
   })
     .then((dbData) => {
       if (!dbData) {
@@ -69,7 +85,9 @@ router.delete("/:id", (req, res) => {
   })
     .then((dbData) => {
       if (!dbData) {
-        res.status(404).json({ message: `No author found with id ${req.params.id}.` });
+        res
+          .status(404)
+          .json({ message: `No author found with id ${req.params.id}.` });
         return;
       }
       res.json(dbData);
