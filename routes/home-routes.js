@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Genre, Book, Author } = require("../models");
+const { Genre, Book, Author, User } = require("../models");
 const { Op } = require("sequelize");
 
 router.get("/", (req, res) => {
@@ -53,6 +53,20 @@ router.get("/search", async (req, res) => {
           { genre_id: { [Op.in]: genreIdsArr } },
         ],
       },
+      include: [
+        {
+          model: User,
+          attributes: ["username"],
+        },
+        {
+          model: Author,
+          attributes: ["first_name", "last_name"],
+        },
+        {
+          model: Genre,
+          attributes: ["name"],
+        },
+      ],
     });
 
     // serialize each search result
@@ -60,12 +74,10 @@ router.get("/search", async (req, res) => {
 
     // render search results view with found books
     res.render("search-results", { query, books });
-    
   } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
+    console.log(err);
+    res.status(500).json(err);
   }
-    
 });
 
 router.get("/book/:id", (req, res) => {

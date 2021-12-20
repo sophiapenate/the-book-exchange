@@ -1,14 +1,9 @@
-<h2>Search Results Page</h2>
-{{query}}
+<div class="uk-container uk-margin-medium-top">
+  <h2>Showing books related to "{{query}}"</h2>
 
-{{#if books.length}}
-<ul>
-    {{#each books as |book|}}
-    <li>
-        <h5>{{book.title}}</h5>
-    </li>
-    {{/each}}
-</ul>
-{{else}}
-<h3>Nothing found.</h3>
-{{/if}}
+  {{#if books.length}}
+    {{> book-list books}}
+  {{else}}
+    <h3>Nothing found.</h3>
+  {{/if}}
+</div>
