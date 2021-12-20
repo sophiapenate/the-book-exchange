@@ -1,2 +1,14 @@
-Search Results Page
+<h2>Search Results Page</h2>
 {{query}}
+
+{{#if books.length}}
+<ul>
+    {{#each books as |book|}}
+    <li>
+        <h5>{{book.title}}</h5>
+    </li>
+    {{/each}}
+</ul>
+{{else}}
+<h3>Nothing found.</h3>
+{{/if}}
