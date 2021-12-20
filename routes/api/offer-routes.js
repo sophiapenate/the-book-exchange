@@ -53,7 +53,11 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", (req, res) => {
-  Offer.create(req.body)
+  Offer.create({
+    offer_text: req.body.offer_text,
+    book_id: req.body.book_id,
+    user_id: req.session.user_id
+  })
     .then((dbData) => {
       res.json(dbData);
     })

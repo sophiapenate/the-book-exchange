@@ -58,8 +58,9 @@ a:hover {
 }
 
 a.btn,
-.btn {
-    background-color: #bc4a4a;
+.btn,
+a.btn-blue,
+.btn-blue {
     opacity: .85;
     color: #F6EDDD;
     padding: 12px 14px;
@@ -69,8 +70,20 @@ a.btn,
     font-size: 18px;
 }
 
+a.btn,
+.btn {
+    background-color: #bc4a4a;
+}
+
+a.btn-blue,
+.btn-blue {
+    background-color: #35686D;
+}
+
 a.btn:hover,
-.btn:hover {
+.btn:hover,
+a.btn-blue:hover,
+.btn-blue:hover {
     text-decoration: none;
     cursor: pointer;
     opacity: 1;

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Genre, Book, Author, User } = require("../models");
+const { Genre, Book, Author, User, Offer } = require("../models");
 const { Op } = require("sequelize");
 
 router.get("/", (req, res) => {
@@ -20,8 +20,8 @@ router.get("/", (req, res) => {
       },
     ],
   })
-    .then(dbData => {
-      const books = dbData.map(book => book.get({ plain: true }));
+    .then((dbData) => {
+      const books = dbData.map((book) => book.get({ plain: true }));
       res.render("homepage", { books, loggedIn: req.session.loggedIn });
     })
     .catch();
@@ -94,7 +94,11 @@ router.get("/search", async (req, res) => {
     const books = bookSearchResult.map((book) => book.get({ plain: true }));
 
     // render search results view with found books
-    res.render("search-results", { query, books, loggedIn: req.session.loggedIn });
+    res.render("search-results", {
+      query,
+      books,
+      loggedIn: req.session.loggedIn,
+    });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -104,7 +108,7 @@ router.get("/search", async (req, res) => {
 router.get("/book/:id", (req, res) => {
   Book.findOne({
     where: {
-      id: req.params.id
+      id: req.params.id,
     },
     include: [
       {
@@ -119,21 +123,37 @@ router.get("/book/:id", (req, res) => {
         model: Genre,
         attributes: ["name"],
       },
+      {
+        model: Offer,
+        include: [
+          {
+            model: User,
+            attributes: ["username"],
+          },
+        ],
+      },
     ],
   })
-  .then(dbData => {
-    if (!dbData) {
-      res.status(404).render("404");
-      return;
-    }
+    .then((dbData) => {
+      if (!dbData) {
+        res.status(404).render("404");
+        return;
+      }
 
-    const book = dbData.get({ plain: true });
-    res.render("single-book", { book, loggedIn: req.session.loggedIn });
-  })
-  .catch(err => {
-    console.log(err);
-    res.status(500).json(err);
-  });
+      const book = dbData.get({ plain: true });
+
+      // check if book posted by current user
+      let current_users_book = false;
+      if (book.user_id === req.session.user_id) {
+        current_users_book = true;
+      }
+
+      res.render("single-book", { book, current_users_book, loggedIn: req.session.loggedIn });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
 });
 
 router.get("/login", (req, res) => {
