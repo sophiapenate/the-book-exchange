@@ -1,14 +1,19 @@
-<ul class="uk-list uk-grid">
+<ul class="book-list uk-list uk-grid">
   {{#each this as |book|}}
     <li class="uk-grid-item-match uk-width-1-2@m uk-margin-large-bottom">
       <h5 class="uk-margin-remove"><a href="">{{book.title}}</a></h5>
-      <p class="uk-margin-remove">{{book.author.first_name}} {{book.author.last_name}}</p>
+      <p class="uk-margin-remove">{{book.author.first_name}}
+        {{book.author.last_name}}</p>
       <p class="uk-margin-remove">{{book.genre.name}}
-        <span>&nbsp; | &nbsp;</span>
+        <span>&nbsp;|&nbsp;</span>
         {{#if book.is_paperback}}Paperback{{else}}Hardcover{{/if}}
-        <span>&nbsp; | &nbsp;</span>
+        <span>&nbsp;|&nbsp;</span>
         Condition:
         {{book.condition}}</p>
+      <div class="uk-margin">
+        <a class="btn" href="#">Offer Trade</a>
+      </div>
+
     </li>
   {{/each}}
 </ul>
