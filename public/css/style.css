@@ -14,3 +14,22 @@
     min-height: 0px !important;
     margin-top: 20px;
 }
+
+#getStarted{
+    height: 350px;
+}
+
+#welcomeBox{
+    display: flex;
+    justify-content: center;
+    background-color: #35686D;
+    border-radius: 10px;
+    opacity: 90%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
