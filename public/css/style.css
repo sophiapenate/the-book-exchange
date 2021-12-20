@@ -24,6 +24,10 @@ body {
     margin-top: 20px;
 }
 
+.uk-list>:nth-child(n+2) {
+    margin-top: 0 !important;
+}
+
 #getStarted{
     height: 350px;
 }
