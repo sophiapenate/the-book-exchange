@@ -2,16 +2,18 @@
 
   <h2>Hello, {{user.first_name}}!</h2>
 
-  <h3>My Accepted Offers</h3>
+  <div>
+    <h3>My Offers</h3>
+  </div>
 
-    <div>
-      <h3>My Available Books</h3>
-        {{#if user.books.length}}
+  <div>
+    <h3>My Available Books</h3>
+      {{#if user.books.length}}
         {{> book-list user.books}}
-        {{else}}
+      {{else}}
         <p>You don't have any books available to trade.</p>
-        {{/if}}
-    </div>
+      {{/if}}
+  </div>
 
 
 </div>

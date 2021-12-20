@@ -102,7 +102,38 @@ router.get("/search", async (req, res) => {
 });
 
 router.get("/book/:id", (req, res) => {
-  res.render("single-book", { loggedIn: req.session.loggedIn });
+  Book.findOne({
+    where: {
+      id: req.params.id
+    },
+    include: [
+      {
+        model: User,
+        attributes: ["username"],
+      },
+      {
+        model: Author,
+        attributes: ["first_name", "last_name"],
+      },
+      {
+        model: Genre,
+        attributes: ["name"],
+      },
+    ],
+  })
+  .then(dbData => {
+    if (!dbData) {
+      res.status(404).render("404");
+      return;
+    }
+
+    const book = dbData.get({ plain: true });
+    res.render("single-book", { book, loggedIn: req.session.loggedIn });
+  })
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 router.get("/login", (req, res) => {

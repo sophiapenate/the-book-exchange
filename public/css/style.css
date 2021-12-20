@@ -47,6 +47,10 @@ body {
     margin-right: 25%;
 }
 
+.xlfont {
+    font-size: 5em;
+}
+
 /* CUSTOM LINK & BUTTON STYLES */
 a,
 a:hover {
