@@ -6,10 +6,11 @@
     <p>Genre: {{book.genre.name}}</p>
     <p>Format: {{#if book.is_paperback}}Paperback{{else}}Hardcover{{/if}}</p>
     <p>Condition: {{book.condition}}</p>
-    <p>{{book.description}}</p>
+    {{#if book.description}}<p>{{book.description}}</p>{{/if}}
   </div>
 
   {{#if book.is_available}}
+    {{#if ../current_users_book}}
     <div class="uk-margin-large-top">
       <h3>Make an offer on this book:</h3>
       <form class="offer-form">
@@ -27,6 +28,7 @@
         </div>
       </form>
     </div>
+    {{/if}}
     <div class="uk-margin-large-top">
         <h3>Current Offers:</h3>
         {{#if book.offers.length}}

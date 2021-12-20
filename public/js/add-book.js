@@ -76,7 +76,9 @@ async function addBookFormHandler(e) {
       });
   
       if (createBookResponse.ok) {
-        document.location.replace("/dashboard");
+        createBookResponse.json().then((bookData) => {
+          document.location.replace('/book/' + bookData.id);
+        });
       } else {
         createBookResponse.json().then((data) => {
           console.log(data.errors[0].message);
