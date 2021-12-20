@@ -10,7 +10,6 @@
   </div>
 
   {{#if book.is_available}}
-    {{#if ../current_users_book}}
     <div class="uk-margin-large-top">
       <h3>Make an offer on this book:</h3>
       <form class="offer-form">
@@ -28,7 +27,6 @@
         </div>
       </form>
     </div>
-    {{/if}}
     <div class="uk-margin-large-top">
         <h3>Current Offers:</h3>
         {{#if book.offers.length}}
@@ -39,11 +37,9 @@
                     <p class="uk-margin-small-top uk-margin-remove-bottom">{{this.offer_text}}</p>
                     <p class="uk-margin-small-bottom uk-margin-small-top uk-text-small">Offer submitted by {{this.user.username}} on {{this.createdAt}}</p>
                 </div>
-                {{#if ../current_users_book}}
                 <div class="uk-margin">
                     <a class="btn-blue" href="#">Accept offer!</a>
                 </div>
-                {{/if}}
             </li>
             {{/each}}
         </ul>

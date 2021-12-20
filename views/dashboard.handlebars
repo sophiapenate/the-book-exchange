@@ -3,11 +3,11 @@
   <h2>Hello, {{user.first_name}}!</h2>
 
   <div>
-    <h3>My Offers</h3>
+    <h2>My Offers</h2>
   </div>
 
   <div>
-    <h3>My Available Books</h3>
+    <h2>My Available Books</h2>
       {{#if user.books.length}}
         {{> book-list user.books}}
       {{else}}

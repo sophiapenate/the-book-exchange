@@ -4,6 +4,7 @@ const { Op } = require("sequelize");
 
 router.get("/", (req, res) => {
   Book.findAll({
+    limit: 10,
     order: [["created_at", "DESC"]],
     include: [
       {
@@ -142,13 +143,7 @@ router.get("/book/:id", (req, res) => {
 
       const book = dbData.get({ plain: true });
 
-      // check if book posted by current user
-      let current_users_book = false;
-      if (book.user_id === req.session.user_id) {
-        current_users_book = true;
-      }
-
-      res.render("single-book", { book, current_users_book, loggedIn: req.session.loggedIn });
+      res.render("single-book", { book, loggedIn: req.session.loggedIn });
     })
     .catch((err) => {
       console.log(err);
