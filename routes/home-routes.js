@@ -3,7 +3,28 @@ const { Genre, Book, Author, User } = require("../models");
 const { Op } = require("sequelize");
 
 router.get("/", (req, res) => {
-  res.render("homepage");
+  Book.findAll({
+    order: [["created_at", "DESC"]],
+    include: [
+      {
+        model: User,
+        attributes: ["username"],
+      },
+      {
+        model: Author,
+        attributes: ["first_name", "last_name"],
+      },
+      {
+        model: Genre,
+        attributes: ["name"],
+      },
+    ],
+  })
+    .then(dbData => {
+      const books = dbData.map(book => book.get({ plain: true }));
+      res.render("homepage", { books, loggedIn: req.session.loggedIn });
+    })
+    .catch();
 });
 
 router.get("/search", async (req, res) => {
@@ -73,7 +94,7 @@ router.get("/search", async (req, res) => {
     const books = bookSearchResult.map((book) => book.get({ plain: true }));
 
     // render search results view with found books
-    res.render("search-results", { query, books });
+    res.render("search-results", { query, books, loggedIn: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -81,7 +102,7 @@ router.get("/search", async (req, res) => {
 });
 
 router.get("/book/:id", (req, res) => {
-  res.render("single-book");
+  res.render("single-book", { loggedIn: req.session.loggedIn });
 });
 
 router.get("/login", (req, res) => {

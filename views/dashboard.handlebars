@@ -1,1 +1,17 @@
-My Dashboard
+<div class="uk-container uk-margin-medium-top uk-margin-large-bottom">
+
+  <h2>Hello, {{user.first_name}}!</h2>
+
+  <h3>My Accepted Offers</h3>
+
+    <div>
+      <h3>My Available Books</h3>
+        {{#if user.books.length}}
+        {{> book-list user.books}}
+        {{else}}
+        <p>You don't have any books available to trade.</p>
+        {{/if}}
+    </div>
+
+
+</div>

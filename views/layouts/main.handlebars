@@ -43,8 +43,13 @@
             href="#"
           ></a>
           <ul class="uk-navbar-nav">
+            {{#if loggedIn }}
+            <li><a href="/dashboard">My Dashboard</a></li>
+            <li><a href="/logout">Logout</a></li>
+            {{else}}
             <li class="uk-active uk-flex-inline"><a href="./signup">Sign Up</a></li>
-            <li><a href="./login">Log in</a></li>
+            <li><a href="/login">Log in</a></li>
+            {{/if}}
           </ul>
         </div>
         <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
