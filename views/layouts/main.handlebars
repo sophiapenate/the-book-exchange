@@ -13,8 +13,10 @@
     <!--Google Fonts-->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Condensed:wght@400;700&display=swap"
       rel="stylesheet"
     />
 
@@ -28,59 +30,56 @@
     <title>The Book Exchange</title>
   </head>
   <body>
-    <div class="wrapper">
-      <header>
-        <nav class="uk-navbar-container uk-margin uk-navbar">
-          <div class="nav-overlay uk-navbar-left">
-            <a class="uk-navbar-item uk-logo" href="/">The Book Exchange</a>
-          </div>
-          <div class="nav-overlay uk-navbar-right">
-            <a
-              class="uk-navbar-toggle"
-              uk-search-icon
-              uk-toggle="target: .nav-overlay; animation: uk-animation-fade"
-              href="#"
-            ></a>
-            <ul class="uk-navbar-nav">
-              <li class="uk-active uk-flex-inline"><a href="./signup">Sign Up</a></li>
-              <li><a href="./login">Log in</a></li>
-            </ul>
-          </div>
-          <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
-            <div class="uk-navbar-item uk-width-expand">
-              <form
-                id="header-search-form"
-                class="uk-search uk-search-navbar uk-width-1-1"
-              >
-                <input
-                  id="header-search-input"
-                  class="uk-search-input"
-                  type="search"
-                  placeholder="Search for a book"
-                  autofocus
-                />
-              </form>
+    <header>
+      <nav class="uk-navbar-container uk-margin" uk-navbar>
+        <div class="nav-overlay uk-navbar-left">
+          <a class="uk-navbar-item uk-logo" href="/">The Book Exchange</a>
+        </div>
+        <div class="nav-overlay uk-navbar-right">
+          <a
+            class="uk-navbar-toggle"
+            uk-search-icon
+            uk-toggle="target: .nav-overlay; animation: uk-animation-fade"
+            href="#"
+          ></a>
+          <ul class="uk-navbar-nav">
+            <li class="uk-active uk-flex-inline"><a href="./signup">Sign Up</a></li>
+            <li><a href="./login">Log in</a></li>
+          </ul>
+        </div>
+        <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
+          <div class="uk-navbar-item uk-width-expand">
+            <form
+              id="header-search-form"
+              class="uk-search uk-search-navbar uk-width-1-1"
+            >
+              <input
+                id="header-search-input"
+                class="uk-search-input"
+                type="search"
+                placeholder="Search for a book"
+                autofocus
+              />
+            </form>
 
-            </div>
-            <a
-              class="uk-navbar-toggle"
-              uk-close
-              uk-toggle="target: .nav-overlay; animation: uk-animation-fade"
-              href="#"
-            ></a>
           </div>
-        </nav>
-      </header>
+          <a
+            class="uk-navbar-toggle"
+            uk-close
+            uk-toggle="target: .nav-overlay; animation: uk-animation-fade"
+            href="#"
+          ></a>
+        </div>
+      </nav>
+    </header>
 
-      <main>
-        {{{body}}}
-      </main>
+    <main uk-height-viewport="offset-top: true; offset-bottom: true">
+      {{{body}}}
+    </main>
 
-      <footer class="uk-container uk-padding">
-        <p>Built by Sophia Barrett, Jason Offenbaker, David Schwerd, Ismael
-          Espana</p>
-      </footer>
-    </div>
+    <footer class="uk-container uk-padding">
+      <p>Built by Sophia Barrett, Jason Offenbaker, David Schwerd, Ismael Espana</p>
+    </footer>
   </body>
 </html>
 

@@ -1,5 +1,6 @@
-.wrapper {
+body {
     background-color: #F4F2ED;
+    font-family: 'Roboto', sans-serif;
 }
 .uk-navbar-container{
     background-color: #bc4a4a !important;
@@ -7,6 +8,12 @@
 }
 .uk-logo, .uk-navbar-toggle, .uk-search-input::placeholder, .uk-search-input, .uk-navbar-nav a, footer{
     color: #F6EDDD !important;
+}
+
+.uk-logo {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 32px;
 }
 
 .uk-active a{
@@ -36,6 +43,31 @@
     margin-right: 25%;
 }
 
+/* CUSTOM LINK & BUTTON STYLES */
+a,
+a:hover {
+    color: #35686D; 
+}
+
+a.btn,
+.btn {
+    background-color: #bc4a4a;
+    opacity: .85;
+    color: #F6EDDD;
+    padding: 12px 14px;
+    border-radius: 5px;
+    outline: none;
+    border: 0;
+    font-size: 18px;
+}
+
+a.btn:hover,
+.btn:hover {
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 1;
+}
+
 /* BOOK LIST STYLES */
 .book-list {
     color: #35686D;
@@ -46,20 +78,6 @@
     color: #35686D;
     font-weight: bold;
 }
-
-.book-list a.btn {
-    background-color: #bc4a4a;
-    opacity: .85;
-    color: #F6EDDD;
-    padding: 12px 14px;
-    border-radius: 5px;
-}
-
-.book-list a.btn:hover {
-    text-decoration: none;
-    opacity: 1;
-}
-
 
 /* FOOTER STYLES */
 footer {
