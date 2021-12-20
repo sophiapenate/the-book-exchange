@@ -1,30 +1,16 @@
 
-    <!-- UIkit JS -->
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/js/uikit.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/js/uikit-icons.min.js"></script>
-    <title>The Book Exchange</title>
-</head>
-<body>
-    <header>
-        <nav class="uk-navbar-container uk-margin" uk-navbar>
-            <div class="nav-overlay uk-navbar-left">
-                <a class="uk-navbar-item uk-logo" href="#">The Book Exchange</a>
-            </div>
-            <div class="nav-overlay uk-navbar-right">
-                <a class="uk-navbar-toggle" uk-search-icon uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
-                <ul class="uk-navbar-nav">
-                    <li class="uk-active uk-flex-inline"><a href="/signup">Sign Up</a></li>
-                    <li><a href="#">Log in</a></li>
-                </ul>
-            </div>
-            <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
-                <div class="uk-navbar-item uk-width-expand">
-                    <form class="uk-search uk-search-navbar uk-width-1-1">
-                        <input class="uk-search-input" type="search" placeholder="Search for a book" autofocus>
-                    </form>
-                    
+
+    <main>
+        <div class="uk-height-large uk-background-cover uk-light uk-flex" uk-parallax="bgy: -200" style="background-image: url('images/books_background.jpg');">
+            <div class="uk-flex uk-flex-middle uk-text-center" id="welcomeBox">
+                <div class="" id="getStarted">
+                    <p>Welcome to</p>
+                    <h1>The Book Exchange!</h1>
+                    <h3>The place to trade books and discover new reads</h3>
+                    <a href="./signup">Get Started</a>
+                    <a href="./login">Login</a>
                 </div>
-                <a class="uk-navbar-toggle" uk-close uk-toggle="target: .nav-overlay; animation: uk-animation-fade" href="#"></a>
+
             </div>
-        </nav>
-    </header>
+        </div>
+    </main>
