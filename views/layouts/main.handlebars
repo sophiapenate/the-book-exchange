@@ -43,12 +43,12 @@
             href="#"
           ></a>
           <ul class="uk-navbar-nav">
-            {{#if loggedIn }}
-            <li><a href="/dashboard">My Dashboard</a></li>
-            <li><a href="/logout">Logout</a></li>
+            {{#if loggedIn}}
+              <li><a href="/dashboard">My Dashboard</a></li>
+              <li><a id="logout">Logout</a></li>
             {{else}}
-            <li class="uk-active uk-flex-inline"><a href="./signup">Sign Up</a></li>
-            <li><a href="/login">Log in</a></li>
+              <li class="uk-active uk-flex-inline"><a href="./signup">Sign Up</a></li>
+              <li><a href="/login">Log in</a></li>
             {{/if}}
           </ul>
         </div>
@@ -89,3 +89,6 @@
 </html>
 
 <script src="/js/search.js"></script>
+{{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+{{/if}}
