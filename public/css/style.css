@@ -62,6 +62,10 @@ body {
     font-size: 24px;
 }
 
+#welcomeBox a {
+    color: #F6EDDD;
+}
+
 .xlfont {
     font-size: 5em;
 }
@@ -94,7 +98,9 @@ a:hover {
 a.btn,
 .btn,
 a.btn-blue,
-.btn-blue {
+.btn-blue,
+a.btn-yellow,
+.btn-yellow {
     opacity: .85;
     color: #F6EDDD;
     padding: 12px 14px;
@@ -119,6 +125,11 @@ a.btn-yellow,
     background-color: #F19C43;
 }
 
+.btn-small {
+    font-size: 14px;
+    padding: 8px 10px;
+}
+
 a.btn:hover,
 .btn:hover,
 a.btn-blue:hover,
@@ -131,12 +142,31 @@ a.btn-blue:hover,
 /* BOOK LIST STYLES */
 .book-list {
     color: #35686D;
+    font-size: 16px;
 }
 
 .book-list h5 a,
 .book-list h5 a:hover {
+    font-size: 18px;
     color: #35686D;
     font-weight: bold;
+}
+
+.book-list h6 {
+    font-size: 16px;
+    font-style: italic;
+    color: #35686D;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.contact-info-list {
+    color: #bc4a4a;
+}
+
+.contact-info-list a {
+    font-weight: bold;
+    color: #bc4a4a;
 }
 
 /* FOOTER STYLES */
