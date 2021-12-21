@@ -129,7 +129,7 @@ router.get("/book/:id", (req, res) => {
         include: [
           {
             model: User,
-            attributes: ["username"],
+            attributes: ["username", "id"],
           },
         ],
       },

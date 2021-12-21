@@ -67,6 +67,25 @@ router.post("/", (req, res) => {
     });
 });
 
+router.put("/:id", (req, res) => {
+  Offer.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbData) => {
+      if (!dbData[0]) {
+        res.status(404).json({ message: "No offer found with this id." });
+        return;
+      }
+      res.json(dbData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 router.delete("/:id", (req, res) => {
   Offer.destroy({
     where: {

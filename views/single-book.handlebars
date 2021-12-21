@@ -29,7 +29,7 @@
       </form>
     </div>
     {{/unless}}
-    <div class="uk-margin-large-top">
+    <div id="current-offers" class="uk-margin-large-top">
       <h3>Current Offers:</h3>
       {{#if book.offers.length}}
         <ul class="uk-list uk-list-striped">
@@ -48,7 +48,7 @@
               </div>
               {{#if ../book.belongs_to_user}}
                 <div class="uk-margin">
-                  <a class="btn-blue" href="#">Accept offer!</a>
+                  <button type="button" data-book-id="{{../book.id}}" data-offer-id="{{this.id}}" data-user-id="{{this.user.id}}" class="accept-offer btn-blue">Accept offer!</button>
                 </div>
               {{/if}}
             </li>
@@ -67,4 +67,8 @@
 
 </div>
 
+{{#if book.belongs_to_user}}
+<script src="/js/accept-offer.js"></script>
+{{else}}
 <script src="/js/make-offer.js"></script>
+{{/if}}
