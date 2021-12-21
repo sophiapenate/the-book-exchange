@@ -28,11 +28,7 @@ async function acceptOfferHandler(e) {
       updateOfferResponse.json();
     }
 
-    // send both users email
-
-  
-    
-    
+    document.location.replace("/dashboard");
   }
 }
 

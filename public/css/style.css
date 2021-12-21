@@ -31,7 +31,7 @@ body {
 #welcomeBox{
     display: flex;
     justify-content: center;
-    background-color: rgba(53,104,109,.75);
+    background-color: rgba(53,104,109,.8);
     border-radius: 10px;
     margin-top: 5%;
     margin-bottom: 5%;

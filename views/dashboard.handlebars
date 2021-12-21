@@ -6,11 +6,16 @@
     </div>  
   </div>
 
-  {{!-- <div class="uk-margin-large-top">
+  <div class="uk-margin-large-top">
     <div class="uk-flexuk-margin-bottom">
-      <h3>My Offers</h3>
+      <h3>Books I've Traded</h3>
+        <ul>
+          {{#each traded_books as |book| }}
+            <li>You accepted an offer to trade {{book.title}}. Check your email for details.</li>
+          {{/each}}
+        </ul>
     </div>
-  </div> --}}
+  </div>
 
   <div class="uk-margin-large-top">
     <div class="uk-flex uk-flex-between uk-margin-bottom">
