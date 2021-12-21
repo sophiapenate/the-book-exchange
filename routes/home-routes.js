@@ -23,6 +23,12 @@ router.get("/", (req, res) => {
   })
     .then((dbData) => {
       const books = dbData.map((book) => book.get({ plain: true }));
+      // if a user is logged in, add property for books that belong to current user
+      books.forEach((book) => {
+        if (book.user_id === req.session.user_id) {
+          book.belongs_to_user = true;
+        }
+      });
       res.render("homepage", { books, loggedIn: req.session.loggedIn, currentUser: req.session.user_id });
     })
     .catch();
