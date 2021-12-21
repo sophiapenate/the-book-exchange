@@ -78,6 +78,13 @@ h2 {
     border-bottom: 3px solid #35686D;
 }
 
+h3 {
+    color: #bc4a4a;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 26px;
+}
+
 /* CUSTOM LINK & BUTTON STYLES */
 a,
 a:hover {

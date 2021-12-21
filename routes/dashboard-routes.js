@@ -29,6 +29,8 @@ router.get("/", (req, res) => {
   .then(dbData => {
     //serialize genreData
     const user = dbData.get({ plain: true });
+    // pass in property to indicate all books belong to user
+    user.books.forEach((book) => book.belongs_to_user = true);
     res.render("dashboard", { user, loggedIn: req.session.loggedIn });
   })
   .catch(err => {

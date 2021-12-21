@@ -1,19 +1,30 @@
 <div class="uk-container uk-margin-medium-top uk-margin-large-bottom">
 
-  <h2>Hello, {{user.first_name}}!</h2>
-
-  <div>
-    <h2>My Offers</h2>
+  <div class="uk-margin-top">
+    <div class="uk-flex uk-flex-center uk-margin-bottom">
+      <h2>Hello, {{user.first_name}}!</h2>
+    </div>  
   </div>
 
-  <div>
-    <h2>My Available Books</h2>
-      {{#if user.books.length}}
-        {{> book-list user.books}}
-      {{else}}
-        <p>You don't have any books available to trade.</p>
-      {{/if}}
-  </div>
+  {{!-- <div class="uk-margin-large-top">
+    <div class="uk-flexuk-margin-bottom">
+      <h3>My Offers</h3>
+    </div>
+  </div> --}}
 
+  <div class="uk-margin-large-top">
+    <div class="uk-flex uk-flex-between uk-margin-bottom">
+      <h3>My Available Books</h3>
+      <div>
+        <a class="btn" href="/dashboard/add-book">Add a Book</a>
+      </div>
+    </div>
+        {{#if user.books.length}}
+          {{> book-list user.books}}
+        {{else}}
+          <p>You don't have any books available to trade.</p>
+        {{/if}}
+    </div>
+  </div>
 
 </div>

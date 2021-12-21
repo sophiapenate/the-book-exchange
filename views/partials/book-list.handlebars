@@ -10,9 +10,16 @@
         <span>&nbsp;|&nbsp;</span>
         Condition:
         {{book.condition}}</p>
-      <div class="uk-margin">
-        <a class="btn" href="#">Offer Trade</a>
-      </div>
+
+      {{#if book.belongs_to_user}}
+        <div class="uk-margin">
+          <a class="btn btn-blue" href="/book/{{book.id}}">View</a>
+        </div>
+      {{else}}
+        <div class="uk-margin">
+          <a class="btn" href="/book/{{book.id}}">Offer Trade</a>
+        </div>
+      {{/if}}
     </li>
   {{/each}}
 </ul>
