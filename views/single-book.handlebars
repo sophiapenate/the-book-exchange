@@ -10,6 +10,7 @@
   </div>
 
   {{#if book.is_available}}
+    {{#unless book.belongs_to_user}}
     <div class="uk-margin-large-top">
       <h3>Make an offer on this book:</h3>
       <form class="offer-form">
@@ -27,28 +28,37 @@
         </div>
       </form>
     </div>
+    {{/unless}}
     <div class="uk-margin-large-top">
-        <h3>Current Offers:</h3>
-        {{#if book.offers.length}}
+      <h3>Current Offers:</h3>
+      {{#if book.offers.length}}
         <ul class="uk-list uk-list-striped">
-            {{#each book.offers}}
+          {{#each book.offers}}
             <li class="uk-flex uk-flex-between">
-                <div>
-                    <p class="uk-margin-small-top uk-margin-remove-bottom">{{this.offer_text}}</p>
-                    <p class="uk-margin-small-bottom uk-margin-small-top uk-text-small">Offer submitted by {{this.user.username}} on {{this.createdAt}}</p>
-                </div>
+              <div>
+                <p
+                  class="uk-margin-small-top uk-margin-remove-bottom"
+                >{{this.offer_text}}</p>
+                <p
+                  class="uk-margin-small-bottom uk-margin-small-top uk-text-small"
+                >Offer submitted by
+                  {{this.user.username}}
+                  on
+                  {{this.createdAt}}</p>
+              </div>
+              {{#if ../book.belongs_to_user}}
                 <div class="uk-margin">
-                    <a class="btn-blue" href="#">Accept offer!</a>
+                  <a class="btn-blue" href="#">Accept offer!</a>
                 </div>
+              {{/if}}
             </li>
-            {{/each}}
+          {{/each}}
         </ul>
-        {{else}}
+      {{else}}
         <p>Nobody has made an offer on this book yet.</p>
-        {{/if}}
+      {{/if}}
     </div>
-        
-        
+
   {{else}}
     <div>
       <p>Sorry, this book has been traded and is no longer available</p>

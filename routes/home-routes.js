@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
     include: [
       {
         model: User,
-        attributes: ["username"],
+        attributes: ["username", "id"],
       },
       {
         model: Author,
@@ -23,7 +23,7 @@ router.get("/", (req, res) => {
   })
     .then((dbData) => {
       const books = dbData.map((book) => book.get({ plain: true }));
-      res.render("homepage", { books, loggedIn: req.session.loggedIn });
+      res.render("homepage", { books, loggedIn: req.session.loggedIn, currentUser: req.session.user_id });
     })
     .catch();
 });
@@ -142,6 +142,11 @@ router.get("/book/:id", (req, res) => {
       }
 
       const book = dbData.get({ plain: true });
+
+      // check if book belongs to current user
+      if (book.user_id === req.session.user_id){
+        book.belongs_to_user = true;
+      }
 
       res.render("single-book", { book, loggedIn: req.session.loggedIn });
     })
