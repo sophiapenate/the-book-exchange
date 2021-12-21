@@ -125,7 +125,7 @@ router.delete("/:id", withAuth, (req, res) => {
           .json({ message: `No book found with id ${req.params.id}.` });
         return;
       }
-      res.json(dbData);
+      res.status(204).json({ message: 'success'});
     })
     .catch((err) => {
       console.log(err);
