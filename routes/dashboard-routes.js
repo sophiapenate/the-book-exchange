@@ -1,8 +1,8 @@
 const { Genre, Author, User, Book, Offer } = require("../models");
-
 const router = require("express").Router();
+const withAuth = require('../utils/auth');
 
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   User.findOne({
     where: {
       id: req.session.user_id,
@@ -65,7 +65,7 @@ router.get("/", (req, res) => {
     });
 });
 
-router.get("/add-book", (req, res) => {
+router.get("/add-book", withAuth, (req, res) => {
   if (!req.session.loggedIn) {
     res.redirect("/");
   } else {

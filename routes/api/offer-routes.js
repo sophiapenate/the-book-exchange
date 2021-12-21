@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { Offer, Book, User, Author, Genre } = require("../../models");
 const { sendOfferAcceptedEmail } = require("../../utils/sendEmail");
+const withAuth = require('../../utils/auth');
 
 router.get("/", (req, res) => {
   Offer.findAll()
@@ -53,7 +54,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   Offer.create({
     offer_text: req.body.offer_text,
     book_id: req.body.book_id,
@@ -68,7 +69,7 @@ router.post("/", (req, res) => {
     });
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", withAuth, (req, res) => {
   Offer.update(req.body, {
     where: {
       id: req.params.id,
@@ -87,7 +88,7 @@ router.put("/:id", (req, res) => {
     });
 });
 
-router.put("/accept/:id", (req, res) => {
+router.put("/accept/:id", withAuth, (req, res) => {
   Offer.update(req.body, {
     where: {
       id: req.params.id,
@@ -110,7 +111,7 @@ router.put("/accept/:id", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
   Offer.destroy({
     where: {
       id: req.params.id,
