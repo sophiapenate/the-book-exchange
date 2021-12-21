@@ -9,7 +9,7 @@
   <div class="uk-margin-large-top">
     <div class="uk-flexuk-margin-bottom">
       <h3>Books I've Traded</h3>
-        <ul class="book-list uk-list uk-grid uk-grid-match">
+        <ul id="books-ive-traded-list" class="book-list uk-list uk-grid uk-grid-match">
           {{#each traded_books as |book| }}
             <li class="uk-width-1-2@m uk-margin-large-bottom">
               <h5 class="uk-margin-remove"><a href="/book/{{book.id}}">{{book.title}}</a></h5>
@@ -37,7 +37,7 @@
               {{/each}}
 
               <div class="uk-margin-small-top">
-                <button class="btn btn-yellow btn-small">I've completed this trade. Delete this book.</button>
+                <button class="delete-book btn btn-yellow btn-small" data-book-id="{{book.id}}">I've completed this trade. Delete this book.</button>
               </div>
               
             </li>
@@ -62,3 +62,5 @@
   </div>
 
 </div>
+
+<script src="/js/delete-book.js"></script>
