@@ -1,6 +1,6 @@
 const { Offer, User, Book } = require("../models");
 
-function sendOfferAcceptedEmails(offerId) {
+function sendOfferAcceptedEmail(offerId) {
   // import env variables
   require("dotenv").config();
 
@@ -30,19 +30,24 @@ function sendOfferAcceptedEmails(offerId) {
       },
     ],
   }).then((dbData) => {
-    // serialize data
+    // serialize and organize data
     const offer = dbData.get({ plain: true });
     const offerer = offer.user;
     const offeree = offer.book.user;
-    console.log(offer);
 
     // compose email to Offerer
     const msgToOfferer = {
-      to: "sbar91@gmail.com",
-      from: "sophia@yoursummit.media",
+      to: `${offerer.email}`,
+      from: "hello@yoursummit.media",
       subject: `Your offer has been accepted!`,
-      text: `${offeree.first_name} has accepted your offer to trade ${offer.book.title}! Contact ${offeree.first_name} at ${offeree.email} or ${offeree.phone} to coordinate your trade.`,
-      html: `${offeree.first_name} has accepted your offer to trade ${offer.book.title}! Contact ${offeree.first_name} at ${offeree.email} or ${offeree.phone} to coordinate your trade.`,
+      text: `${offeree.first_name} has accepted your offer to trade ${offer.book.title}!
+      Contact ${offeree.first_name} at ${offeree.email} or ${offeree.phone} to coordinate your trade.
+      Here's what you offered:
+      ${offer.offer_text}`,
+      html: `<strong>${offeree.first_name} has accepted your offer to trade ${offer.book.title}!</strong><br/>
+      Contact ${offeree.first_name} at ${offeree.email} or ${offeree.phone} to coordinate your trade.<br/>
+      Here's what you offered:<br/>
+      ${offer.offer_text}`,
     };
 
     // send email to Offerer
@@ -57,27 +62,8 @@ function sendOfferAcceptedEmails(offerId) {
       }
     );
   });
-
-  //   const msg = {
-  //     to: "sbar91@gmail.com",
-  //     from: "sophia@yoursummit.media", // Use the email address or domain you verified above
-  //     subject: "Sending with Twilio SendGrid is Fun",
-  //     text: "and easy to do anywhere, even with Node.js",
-  //     html: "<strong>and easy to do anywhere, even with Node.js</strong>",
-  //   };
-  //   //ES6
-  //   sgMail.send(msg).then(
-  //     () => {},
-  //     (error) => {
-  //       console.error(error);
-
-  //       if (error.response) {
-  //         console.error(error.response.body);
-  //       }
-  //     }
-  //   );
 }
 
 module.exports = {
-  sendOfferAcceptedEmails,
+  sendOfferAcceptedEmail,
 };

@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Offer, Book, User, Author, Genre } = require("../../models");
-const { sendOfferAcceptedEmails } = require("../../utils/sendEmail");
+const { sendOfferAcceptedEmail } = require("../../utils/sendEmail");
 
 router.get("/", (req, res) => {
   Offer.findAll()
@@ -99,8 +99,8 @@ router.put("/accept/:id", (req, res) => {
         return;
       }
 
-      // send emails to users
-      sendOfferAcceptedEmails(req.params.id);
+      // send email to offerer
+      sendOfferAcceptedEmail(req.params.id);
 
       res.status(200).json(dbData);
     })
