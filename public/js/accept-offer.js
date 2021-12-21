@@ -8,31 +8,31 @@ async function acceptOfferHandler(e) {
 
     // change book to unavailable in db
     const updateBookResponse = await fetch(`/api/books/${book_id}`, {
-        method: "PUT",
-        body: JSON.stringify({ is_available: 0 }),
-        headers: { "Content-Type": "application/json" },
+      method: "PUT",
+      body: JSON.stringify({ is_available: 0 }),
+      headers: { "Content-Type": "application/json" },
     });
 
-    if (updateBookResponse.ok) {
-        alert("book marked as unavailable");
-    } else {
-        updateBookResponse.json();
+    if (!updateBookResponse.ok) {
+      updateBookResponse.json();
     }
 
     // change offer to accepted in db
-    const updateOfferResponse = await fetch(`/api/offers/${offer_id}`, {
-        method: "PUT",
-        body: JSON.stringify({ accepted: 1 }),
-        headers: { "Content-Type": "application/json" },
+    const updateOfferResponse = await fetch(`/api/offers/accept/${offer_id}`, {
+      method: "PUT",
+      body: JSON.stringify({ accepted: 1 }),
+      headers: { "Content-Type": "application/json" },
     });
 
-    if (updateOfferResponse.ok) {
-        alert("offer marked as accepted");
-    } else {
-        updateOfferResponse.json();
+    if (!updateOfferResponse.ok) {
+      updateOfferResponse.json();
     }
 
     // send both users email
+
+  
+    
+    
   }
 }
 

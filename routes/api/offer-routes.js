@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Offer, Book, User, Author, Genre } = require("../../models");
+const { sendEmail } = require("../../utils/sendEmail")
 
 router.get("/", (req, res) => {
   Offer.findAll()
@@ -78,6 +79,27 @@ router.put("/:id", (req, res) => {
         res.status(404).json({ message: "No offer found with this id." });
         return;
       }
+      res.json(dbData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.put("/accept/:id", (req, res) => {
+  Offer.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbData) => {
+      if (!dbData[0]) {
+        res.status(404).json({ message: "No offer found with this id." });
+        return;
+      }
+
+      sendEmail();
       res.json(dbData);
     })
     .catch((err) => {
