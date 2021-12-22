@@ -6,6 +6,8 @@ require("dotenv").config();
 let sequelize;
 // check if running remotely
 if (process.env.JAWSDB_URL) {
+  // TODO Remove later
+  console.log(`process.env.JAWSDB_URL ${process.env.JAWSDB_URL}`);
   sequelize = new Sequelize(process.env.JAWSDB_URL);
 } else {
   // create local db connection
