@@ -1,10 +1,10 @@
 
 <div
-  class="uk-height-large uk-background-cover uk-light uk-flex"
+  class="uk-background-cover uk-light uk-margin-remove"
   style="background-image: url('images/books_background.jpg');"
 >
-  <div class="uk-flex uk-flex-middle uk-text-center" id="welcomeBox">
-    <div class="" id="getStarted">
+  <div class="uk-container uk-container-xsmall">
+    <div class="uk-margin-xlarge-top uk-margin-xlarge-bottom uk-text-center" id="welcomeBox">
       <h1><span>Welcome to</span><br/>The Book Exchange!</h1>
       <p>The place to trade books and discover new reads.</p>
       {{#if loggedIn}}
@@ -14,15 +14,15 @@
       <a href="/login">Login</a>
       {{/if}}
     </div>
-  </div>
+  </div>  
 </div>
 
-<div class="uk-container uk-margin-large-top uk-margin-large-bottom uk-margin-large-left uk-margin-large-right">
-  <div class="uk-flex uk-flex-center uk-margin-medium-top">
+
+<div class="uk-container uk-container-medium uk-align-center uk-margin-large">
+  <div class="uk-flex uk-flex-center">
     <h2 class="uk-margin">Recently Added Books</h2>
   </div>
   <div class="uk-margin-large-top uk-margin-large-bottom">
     {{> book-list books loggedIn=loggedIn}}
   </div>
 </div>
-

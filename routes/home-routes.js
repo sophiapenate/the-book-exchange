@@ -21,6 +21,8 @@ router.get("/", (req, res) => {
       {
         model: Genre,
         attributes: ["name"],
+      },{
+        model: Offer,
       },
     ],
   })

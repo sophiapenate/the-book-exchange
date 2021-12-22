@@ -48,7 +48,7 @@
               <li><a href="/dashboard">My Dashboard</a></li>
               <li><a id="logout">Logout</a></li>
             {{else}}
-              <li class="uk-active uk-flex-inline"><a href="./signup">Sign Up</a></li>
+              <li class="uk-active uk-flex-inline"><a href="/signup">Sign Up</a></li>
               <li><a href="/login">Log in</a></li>
             {{/if}}
           </ul>
@@ -80,7 +80,7 @@
 
     </header>
 
-    <main uk-height-viewport="offset-top: true; offset-bottom: true">
+    <main uk-height-viewport="offset-top: true; offset-bottom: true" class="uk-margin-remove">
       {{{body}}}
     </main>
 
