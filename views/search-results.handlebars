@@ -1,2 +1,9 @@
-Search Results Page
-{{query}}
+<div class="uk-container uk-margin-medium-top uk-margin-large-bottom">
+  <h3>Showing books related to "{{query}}"</h3>
+
+  {{#if books.length}}
+    {{> book-list books}}
+  {{else}}
+    <h3>Nothing found.</h3>
+  {{/if}}
+</div>

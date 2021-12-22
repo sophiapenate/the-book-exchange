@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { User, Book, Author, Genre } = require("../../models");
+const withAuth = require('../../utils/auth');
 
 router.get("/", (req, res) => {
   User.findAll({
@@ -62,7 +63,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   User.create(req.body)
     .then((dbData) => {
       req.session.save(() => {
@@ -114,7 +115,7 @@ router.post("/logout", (req, res) => {
   }
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
   User.destroy({
     where: {
       id: req.params.id,

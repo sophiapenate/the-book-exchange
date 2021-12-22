@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Book, User, Author, Genre, Offer } = require("../../models");
+const withAuth = require('../../utils/auth');
 
 router.get("/", (req, res) => {
   Book.findAll({
@@ -72,7 +73,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   Book.create({
     title: req.body.title,
     author_id: req.body.author_id,
@@ -92,7 +93,26 @@ router.post("/", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
+router.put("/:id", withAuth, (req, res) => {
+  Book.update(req.body, {
+    where: {
+      id: req.params.id,
+    },
+  })
+    .then((dbData) => {
+      if (!dbData[0]) {
+        res.status(404).json({ message: "No book found with this id." });
+        return;
+      }
+      res.json(dbData);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
+router.delete("/:id", withAuth, (req, res) => {
   Book.destroy({
     where: {
       id: req.params.id,
@@ -105,7 +125,7 @@ router.delete("/:id", (req, res) => {
           .json({ message: `No book found with id ${req.params.id}.` });
         return;
       }
-      res.json(dbData);
+      res.status(204).json({ message: 'success'});
     })
     .catch((err) => {
       console.log(err);
