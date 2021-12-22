@@ -55,6 +55,7 @@ async function signupFormHandler(e) {
 
     if (response.ok) {
       document.location.replace("/dashboard");
+      console.log(response)
     } else {
       response.json().then((data) => {
         console.log(data.errors[0].message);
