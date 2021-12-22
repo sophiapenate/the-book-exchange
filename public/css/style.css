@@ -171,7 +171,8 @@ footer {
 }
 
 @media screen and (max-width: 560px) {
-    .uk-navbar {
+    .uk-navbar,
+    .unflex-sm {
         display: block;
     }
 
