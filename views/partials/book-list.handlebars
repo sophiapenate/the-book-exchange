@@ -11,9 +11,11 @@
           <span>&nbsp;|&nbsp;</span>
           Condition:
           {{book.condition}}</p>
+        <p class="uk-margin-remove">
+          Current trade offers: {{book.offers.length}}
+        </p>
 
         {{#if ../loggedIn}}
-        foo
           {{#if book.belongs_to_user}}
             <div class="uk-margin">
               <a class="btn btn-blue" href="/book/{{book.id}}">View My Book</a>

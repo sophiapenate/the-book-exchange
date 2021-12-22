@@ -7,11 +7,11 @@
   </div>
 
   <div class="uk-margin-large-top">
-    <div class="uk-flexuk-margin-bottom">
+    <div class="uk-margin-bottom">
       <h3>Books I've Traded</h3>
-        {{#if traded_books.length}}
+        {{#if user.traded_books.length}}
           <ul id="books-ive-traded-list" class="book-list uk-list uk-grid uk-grid-match">
-            {{#each traded_books as |book| }}
+            {{#each user.traded_books as |book| }}
               <li class="uk-width-1-2@m uk-margin-large-bottom">
                 <h5 class="uk-margin-remove"><a href="/book/{{book.id}}">{{book.title}}</a></h5>
                 <p class="uk-margin-remove">{{book.author.first_name}}
@@ -51,14 +51,14 @@
   </div>
 
   <div class="uk-margin-large-top">
-    <div class="uk-flex uk-flex-between uk-margin-bottom">
+    <div class="uk-flex uk-flex-between uk-margin-bottom unflex-sm">
       <h3>My Available Books</h3>
       <div>
         <a class="btn" href="/dashboard/add-book">Add a Book</a>
       </div>
     </div>
-        {{#if user.books.length}}
-          {{> book-list user.books}}
+        {{#if user.available_books.length}}
+          {{> book-list user.available_books loggedIn=loggedIn}}
         {{else}}
           <p>You don't have any books available to trade.</p>
         {{/if}}
@@ -67,6 +67,6 @@
 
 </div>
 
-{{#if traded_books.length}}
+{{#if user.traded_books.length}}
 <script src="/js/delete-book.js"></script>
 {{/if}}

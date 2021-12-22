@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { Offer, Book, User, Author, Genre } = require("../../models");
-const { sendOfferAcceptedEmail } = require("../../utils/sendEmail");
+const { sendOfferAcceptedEmail, sendOfferMadeEmail } = require("../../utils/sendEmail");
 const withAuth = require('../../utils/auth');
 
 router.get("/", (req, res) => {
@@ -61,6 +61,8 @@ router.post("/", withAuth, (req, res) => {
     user_id: req.session.user_id,
   })
     .then((dbData) => {
+      // email book owner
+      sendOfferMadeEmail(dbData.id);
       res.json(dbData);
     })
     .catch((err) => {
