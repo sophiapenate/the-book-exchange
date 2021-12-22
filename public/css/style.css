@@ -16,7 +16,7 @@
 }
 
 #getStarted{
-    height: 350px;
+    height: 300px;
 }
 
 #welcomeBox{
@@ -32,4 +32,8 @@
     margin-bottom: 5%;
     margin-left: 25%;
     margin-right: 25%;
+}
+
+#signupcard{
+    margin-top: 50px;
 }

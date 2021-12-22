@@ -1,1 +1,58 @@
-Sign Up Page
+
+<div id="signupcard" class="uk-flex uk-flex-center uk-width-auto">
+<div class="uk-card uk-card-body uk-card-default">
+  <h3 class="uk-card-title">Sign Up</h3>
+  <form class="signup-form uk-width-xlarge">
+    <div id="names" class="uk-flex uk-flex-between">
+      <div id="first name" class="uk-width-1-2">
+        <label for="first_name_input">First Name</label><br>
+        <input type="text" id="first_name_input" maxlength="30" required />
+      </div>
+      <div id="last name" class="uk-width-1-2">
+        <label for="last_name_input">Last Name</label><br>
+        <input type="text" id="last_name_input" maxlength="30" required />
+      </div>
+    </div>
+    <div id="userinfo" class="uk-flex uk-flex-between">
+      <div id="email" class="uk-width-1-2">
+        <label for="email_input">Email</label><br>
+        <input type="email" id="email_input" maxlength="255" required />
+      </div>
+      <div id="number" class="uk-width-1-2">
+        <label for="phone_input">Phone Number</label><br>
+        <input type="tel" id="phone_input" maxlength="30" />
+      </div>
+    </div>
+    <div>
+      <label for="favorite_genre_selection">Favorite Genre</label><br>
+      <select id="favorite_genre_selection">
+        <option value="" disabled selected>Choose a genre</option>
+        {{#each genres as |genre|}}
+          <option value="{{genre.id}}">{{genre.name}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div>
+      <label for="username_input">Username</label><br>
+      <input type="text" id="username_input" maxlength="30" required />
+    </div>
+    <div>
+      <label for="password_input">Password</label><br>
+      <input type="password" id="password_input" maxlength="255" required />
+    </div>
+    <div>
+      <label for="renter_password_input">Re-enter Password</label><br>
+      <input type="password" id="renter_password_input" maxlength="255" required />
+    </div>
+    <div>
+      <button type="submit">sign up</button>
+    </div>
+  </form>
+  <div>
+    <p>Already have an account?</p>
+    <p><a href="/login">Login instead.</a></p>
+  </div>
+</div>
+
+<script src="/js/signup.js"></script>
+</div>
