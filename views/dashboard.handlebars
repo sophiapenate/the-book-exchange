@@ -1,0 +1,72 @@
+<div class="uk-container uk-margin-medium-top uk-margin-large-bottom">
+
+  <div class="uk-margin-top">
+    <div class="uk-flex uk-flex-center uk-margin-bottom">
+      <h2>Hello, {{user.first_name}}!</h2>
+    </div>  
+  </div>
+
+  <div class="uk-margin-large-top">
+    <div class="uk-flexuk-margin-bottom">
+      <h3>Books I've Traded</h3>
+        {{#if traded_books.length}}
+          <ul id="books-ive-traded-list" class="book-list uk-list uk-grid uk-grid-match">
+            {{#each traded_books as |book| }}
+              <li class="uk-width-1-2@m uk-margin-large-bottom">
+                <h5 class="uk-margin-remove"><a href="/book/{{book.id}}">{{book.title}}</a></h5>
+                <p class="uk-margin-remove">{{book.author.first_name}}
+                  {{book.author.last_name}}</p>
+                <p class="uk-margin-remove">{{book.genre.name}}
+                  <span>&nbsp;|&nbsp;</span>
+                  {{#if book.is_paperback}}Paperback{{else}}Hardcover{{/if}}
+                  <span>&nbsp;|&nbsp;</span>
+                  Condition:
+                  {{book.condition}}</p>
+
+                {{#each book.offers as |offer|}}
+                {{#if offer.accepted}}
+                  <h6 class="uk-margin-remove">You accepted {{offer.user.first_name}}'s offer to trade on {{format_date offer.createdAt}}:</h6>
+                  <p class="uk-margin-remove">"{{offer.offer_text}}"</p>
+                  <h6 class="uk-margin-remove">Contact {{offer.user.first_name}} to coordinate your trade:</h6>
+                  <ul class="contact-info-list uk-margin-remove uk-list">
+                    <li>Email: <a href="mailto:{{offer.user.email}}">{{offer.user.email}}</a></li>
+                    {{#if offer.user.phone}}
+                    <li>Phone: <a href="tel:{{offer.user.phone}}">{{offer.user.phone}}</a></li>
+                    {{/if}}
+                  </ul>
+                {{/if}}
+                {{/each}}
+
+                <div class="uk-margin-small-top">
+                  <button class="delete-book btn btn-yellow btn-small" data-book-id="{{book.id}}">I've completed this trade. Delete this book.</button>
+                </div>
+                
+              </li>
+            {{/each}}
+          </ul>
+        {{else}}
+          <p>You don't have any trades.</p>
+        {{/if}}
+    </div>
+  </div>
+
+  <div class="uk-margin-large-top">
+    <div class="uk-flex uk-flex-between uk-margin-bottom">
+      <h3>My Available Books</h3>
+      <div>
+        <a class="btn" href="/dashboard/add-book">Add a Book</a>
+      </div>
+    </div>
+        {{#if user.books.length}}
+          {{> book-list user.books}}
+        {{else}}
+          <p>You don't have any books available to trade.</p>
+        {{/if}}
+    </div>
+  </div>
+
+</div>
+
+{{#if traded_books.length}}
+<script src="/js/delete-book.js"></script>
+{{/if}}

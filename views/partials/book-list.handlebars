@@ -1,0 +1,30 @@
+<ul class="book-list uk-list uk-grid uk-grid-match">
+  {{#each this as |book|}}
+    {{#if book.is_available}}
+      <li class="uk-width-1-2@m uk-margin-large-bottom">
+        <h5 class="uk-margin-remove"><a href="/book/{{book.id}}">{{book.title}}</a></h5>
+        <p class="uk-margin-remove">{{book.author.first_name}}
+          {{book.author.last_name}}</p>
+        <p class="uk-margin-remove">{{book.genre.name}}
+          <span>&nbsp;|&nbsp;</span>
+          {{#if book.is_paperback}}Paperback{{else}}Hardcover{{/if}}
+          <span>&nbsp;|&nbsp;</span>
+          Condition:
+          {{book.condition}}</p>
+
+        {{#if ../loggedIn}}
+        foo
+          {{#if book.belongs_to_user}}
+            <div class="uk-margin">
+              <a class="btn btn-blue" href="/book/{{book.id}}">View My Book</a>
+            </div>
+          {{else}}
+            <div class="uk-margin">
+              <a class="btn" href="/book/{{book.id}}">Offer Trade</a>
+            </div>
+          {{/if}}
+        {{/if}}
+      </li>
+    {{/if}}
+  {{/each}}
+</ul>

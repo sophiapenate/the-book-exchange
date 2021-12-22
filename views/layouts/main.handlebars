@@ -1,0 +1,96 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- UIkit CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/css/uikit.min.css"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/style.css" />
+    <!--Google Fonts-->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&family=Roboto+Condensed:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- UIkit JS -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/js/uikit.min.js"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/uikit@3.9.4/dist/js/uikit-icons.min.js"
+    ></script>
+    <title>The Book Exchange</title>
+  </head>
+  <body>
+    <header>
+
+      <nav class="uk-navbar-container uk-margin" uk-navbar>
+        <div class="nav-overlay uk-navbar-left">
+          <a class="uk-navbar-item uk-logo" href="/">The Book Exchange</a>
+        </div>
+        <div class="nav-overlay uk-navbar-right">
+          <a
+            class="uk-navbar-toggle"
+            uk-search-icon
+            uk-toggle="target: .nav-overlay; animation: uk-animation-fade"
+            href="#"
+          ></a>
+          <ul class="uk-navbar-nav">
+            {{#if loggedIn}}
+              <li><a href="/dashboard">My Dashboard</a></li>
+              <li><a id="logout">Logout</a></li>
+            {{else}}
+              <li class="uk-active uk-flex-inline"><a href="./signup">Sign Up</a></li>
+              <li><a href="/login">Log in</a></li>
+            {{/if}}
+          </ul>
+        </div>
+        <div class="nav-overlay uk-navbar-left uk-flex-1" hidden>
+          <div class="uk-navbar-item uk-width-expand">
+            <form
+              id="header-search-form"
+              class="uk-search uk-search-navbar uk-width-1-1"
+            >
+              <input
+                id="header-search-input"
+                class="uk-search-input"
+                type="search"
+                placeholder="Search for a book"
+                autofocus
+              />
+            </form>
+
+          </div>
+          <a
+            class="uk-navbar-toggle"
+            uk-close
+            uk-toggle="target: .nav-overlay; animation: uk-animation-fade"
+            href="#"
+          ></a>
+        </div>
+      </nav>
+
+    </header>
+
+    <main uk-height-viewport="offset-top: true; offset-bottom: true">
+      {{{body}}}
+    </main>
+
+    <footer class="uk-padding">
+      <p>Built by Sophia Barrett, Jason Offenbaker, David Schwerd, Ismael Espana</p>
+    </footer>
+  </body>
+</html>
+
+<script src="/js/search.js"></script>
+{{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+{{/if}}

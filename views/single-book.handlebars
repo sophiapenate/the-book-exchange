@@ -1,0 +1,76 @@
+<div class="uk-container uk-margin-medium-top uk-margin-large-bottom">
+
+  <div>
+    <h2>{{book.title}}</h2>
+    <p>Author: {{book.author.first_name}} {{book.author.last_name}}</p>
+    <p>Genre: {{book.genre.name}}</p>
+    <p>Format: {{#if book.is_paperback}}Paperback{{else}}Hardcover{{/if}}</p>
+    <p>Condition: {{book.condition}}</p>
+    {{#if book.description}}<p>{{book.description}}</p>{{/if}}
+  </div>
+
+  {{#if book.is_available}}
+    {{#if loggedIn}}
+      {{#unless book.belongs_to_user}}
+      <div class="uk-margin-large-top">
+        <h3>Make an offer on this book:</h3>
+        <form class="offer-form">
+          <div class="uk-margin">
+            <textarea
+              required
+              class="uk-textarea"
+              id="offer_input"
+              placeholder="Offer a book to trade!"
+              maxlength="1200"
+            ></textarea>
+          </div>
+          <div class="uk-margin">
+            <button class="btn" type="submit">Submit offer!</button>
+          </div>
+        </form>
+      </div>
+      {{/unless}}
+    {{/if}}
+    <div id="current-offers" class="uk-margin-large-top">
+      <h3>Current Offers:</h3>
+      {{#if book.offers.length}}
+        <ul class="uk-list uk-list-striped">
+          {{#each book.offers}}
+            <li class="uk-flex uk-flex-between">
+              <div>
+                <p
+                  class="uk-margin-small-top uk-margin-remove-bottom"
+                >{{this.offer_text}}</p>
+                <p
+                  class="uk-margin-small-bottom uk-margin-small-top uk-text-small"
+                >Offer submitted by
+                  {{this.user.username}}
+                  on
+                  {{format_date this.createdAt}}</p>
+              </div>
+              {{#if ../book.belongs_to_user}}
+                <div class="uk-margin">
+                  <button type="button" data-book-id="{{../book.id}}" data-offer-id="{{this.id}}" data-user-id="{{this.user.id}}" class="accept-offer btn-blue">Accept offer!</button>
+                </div>
+              {{/if}}
+            </li>
+          {{/each}}
+        </ul>
+      {{else}}
+        <p>Nobody has made an offer on this book yet.</p>
+      {{/if}}
+    </div>
+
+  {{else}}
+    <div>
+      <h3>This book has been traded and is no longer available.</h3>
+    </div>
+  {{/if}}
+
+</div>
+
+{{#if book.belongs_to_user}}
+<script src="/js/accept-offer.js"></script>
+{{else}}
+<script src="/js/make-offer.js"></script>
+{{/if}}

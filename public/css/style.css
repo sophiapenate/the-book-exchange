@@ -1,0 +1,185 @@
+body {
+    background-color: #F4F2ED;
+    font-family: 'Roboto', sans-serif;
+}
+.uk-navbar-container{
+    background-color: #bc4a4a !important;
+    margin-bottom: 0px;
+}
+.uk-logo, .uk-navbar-toggle, .uk-search-input::placeholder, .uk-search-input, .uk-navbar-nav a, footer{
+    color: #F6EDDD !important;
+}
+
+.uk-logo {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+}
+
+.uk-active a{
+    background-color: #F19C43;
+    border-radius: 5px;
+    height:40px !important;
+    min-height: 0px !important;
+    margin-top: 20px;
+}
+
+
+#getStarted{
+    height: 300px;
+}
+
+.uk-list>:nth-child(n+2) {
+    margin-top: 0 !important;
+}
+
+#welcomeBox{
+    display: flex;
+    justify-content: center;
+    background-color: rgba(53,104,109,.8);
+    border-radius: 10px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    width: 100%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 20px 40px 30px 40px;
+}
+
+#welcomeBox h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 40px;
+    color: #F6EDDD;
+}
+
+#welcomeBox h1 span {
+    text-transform: uppercase;
+    font-size: 24px;
+    letter-spacing: .2em;
+    line-height: 2.5em;
+}
+
+#welcomeBox p {
+    color: #F6EDDD;
+    font-size: 24px;
+}
+
+#welcomeBox a {
+    color: #F6EDDD;
+}
+
+.xlfont {
+    font-size: 5em;
+}
+
+/* HEADERS */
+h2 {
+    color: #35686D;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    text-align: center;
+    display: inline-block;
+    padding-bottom: 20px;
+    border-bottom: 3px solid #35686D;
+}
+
+h3 {
+    color: #bc4a4a;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 26px;
+}
+
+/* CUSTOM LINK & BUTTON STYLES */
+a,
+a:hover {
+    color: #35686D; 
+}
+
+a.btn,
+.btn,
+a.btn-blue,
+.btn-blue,
+a.btn-yellow,
+.btn-yellow {
+    opacity: .85;
+    color: #F6EDDD;
+    padding: 12px 14px;
+    border-radius: 5px;
+    outline: none;
+    border: 0;
+    font-size: 18px;
+}
+
+#signupcard{
+    margin-top: 50px;
+}
+
+a.btn,
+.btn {
+    background-color: #bc4a4a;
+}
+
+a.btn-blue,
+.btn-blue {
+    background-color: #35686D;
+}
+
+a.btn-yellow,
+.btn-yellow {
+    background-color: #F19C43;
+}
+
+.btn-small {
+    font-size: 14px;
+    padding: 8px 10px;
+}
+
+a.btn:hover,
+.btn:hover,
+a.btn-blue:hover,
+.btn-blue:hover {
+    text-decoration: none;
+    cursor: pointer;
+    opacity: 1;
+}
+
+/* BOOK LIST STYLES */
+.book-list {
+    color: #35686D;
+    font-size: 16px;
+}
+
+.book-list h5 a,
+.book-list h5 a:hover {
+    font-size: 18px;
+    color: #35686D;
+    font-weight: bold;
+}
+
+.book-list h6 {
+    font-size: 16px;
+    font-style: italic;
+    color: #35686D;
+    font-weight: bold;
+    padding-top: 5px;
+}
+
+.contact-info-list {
+    color: #bc4a4a;
+}
+
+.contact-info-list a {
+    font-weight: bold;
+    color: #bc4a4a;
+}
+
+/* FOOTER STYLES */
+footer {
+    background-color: #35686D;
+    text-align: center;
+}
