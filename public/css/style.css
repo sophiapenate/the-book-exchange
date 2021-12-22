@@ -24,27 +24,13 @@ body {
     margin-top: 20px;
 }
 
-
-#getStarted{
-    height: 300px;
-}
-
 .uk-list>:nth-child(n+2) {
     margin-top: 0 !important;
 }
 
 #welcomeBox{
-    display: flex;
-    justify-content: center;
     background-color: rgba(53,104,109,.8);
     border-radius: 10px;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    width: 100%;
-    margin-top: 5%;
-    margin-bottom: 5%;
-    margin-left: 20%;
-    margin-right: 20%;
     padding: 20px 40px 30px 40px;
 }
 
