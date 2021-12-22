@@ -1,6 +1,6 @@
 const { Genre, Author, User, Book, Offer } = require("../models");
 const router = require("express").Router();
-const withAuth = require('../utils/auth');
+const withAuth = require("../utils/auth");
 
 router.get("/", withAuth, (req, res) => {
   User.findOne({
@@ -28,9 +28,9 @@ router.get("/", withAuth, (req, res) => {
               {
                 model: User,
                 attributes: ["first_name", "email", "phone"],
-              }
-            ]
-          }
+              },
+            ],
+          },
         ],
       },
     ],
@@ -42,7 +42,7 @@ router.get("/", withAuth, (req, res) => {
       // pass in property to indicate all books belong to user
       user.books.forEach((book) => (book.belongs_to_user = true));
 
-      // get array of users traded books
+      // get array of user's traded books
       const traded_books = [];
       user.books.forEach((book) => {
         if (!book.is_available) {
@@ -50,12 +50,19 @@ router.get("/", withAuth, (req, res) => {
         }
       });
 
-      console.log(traded_books);
+      // get array of user's available books
+      const available_books = [];
+      user.books.forEach((book) => {
+        if (book.is_available) {
+          available_books.push(book);
+        }
+      });
 
       // render dashboard and send data
       res.render("dashboard", {
         user,
         traded_books,
+        available_books,
         loggedIn: req.session.loggedIn,
       });
     })

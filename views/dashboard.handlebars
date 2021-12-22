@@ -57,8 +57,8 @@
         <a class="btn" href="/dashboard/add-book">Add a Book</a>
       </div>
     </div>
-        {{#if user.books.length}}
-          {{> book-list user.books}}
+        {{#if user.available_books.length}}
+          {{> book-list user.available_books}}
         {{else}}
           <p>You don't have any books available to trade.</p>
         {{/if}}
