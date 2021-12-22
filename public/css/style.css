@@ -169,3 +169,14 @@ footer {
     background-color: #35686D;
     text-align: center;
 }
+
+@media screen and (max-width: 560px) {
+    .uk-navbar {
+        display: block;
+    }
+
+    .uk-navbar-left,
+    .uk-navbar-right {
+        justify-content: center;
+    }
+}
