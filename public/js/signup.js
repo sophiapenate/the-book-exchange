@@ -84,10 +84,12 @@ async function signupFormHandler(e) {
 
   if (!rentered_password) {
     console.log("Please re-enter your password.");
+
   }
 
   if (password !== rentered_password) {
     console.log("Your passwords don't match. Please try again.");
+    
   }
 }
 

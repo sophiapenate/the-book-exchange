@@ -1,3 +1,6 @@
+let errorMessageUser = document.getElementById('username_input');
+let errorMessagePassword = document.getElementById('password_input');
+
 async function login(e) {
   e.preventDefault();
 
@@ -16,9 +19,13 @@ async function login(e) {
     if (response.ok) {
       document.location.replace("/dashboard");
     } else {
-      alert.log(response.statusText);
+      console.log(response.statusText);
+      errorMessageUser.setAttribute('class', 'uk-input uk-form-danger')
+      errorMessagePassword.setAttribute('class', 'uk-input uk-form-danger')
+
+      console.log(errorMessage)
     }
   }
 }
 
-document.querySelector(".login-form").addEventListener("click", login);
+document.querySelector(".login-form").addEventListener("submit", login);
