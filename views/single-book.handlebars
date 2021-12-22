@@ -44,7 +44,7 @@
                 >Offer submitted by
                   {{this.user.username}}
                   on
-                  {{this.createdAt}}</p>
+                  {{format_date this.createdAt}}</p>
               </div>
               {{#if ../book.belongs_to_user}}
                 <div class="uk-margin">

@@ -25,7 +25,7 @@
 
                 {{#each book.offers as |offer|}}
                 {{#if offer.accepted}}
-                  <h6 class="uk-margin-remove">You accepted {{offer.user.first_name}}'s offer to trade on {{offer.createdAt}}:</h6>
+                  <h6 class="uk-margin-remove">You accepted {{offer.user.first_name}}'s offer to trade on {{format_date offer.createdAt}}:</h6>
                   <p class="uk-margin-remove">"{{offer.offer_text}}"</p>
                   <h6 class="uk-margin-remove">Contact {{offer.user.first_name}} to coordinate your trade:</h6>
                   <ul class="contact-info-list uk-margin-remove uk-list">

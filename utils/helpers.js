@@ -9,4 +9,12 @@ module.exports = {
       return false;
     }
   },
+  format_date: (date) => {
+    const options = {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    };
+    return new Date(date).toLocaleString("en-US", options);
+  }
 };
