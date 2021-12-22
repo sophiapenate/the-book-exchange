@@ -8,10 +8,10 @@ const seedBooks = require('./bookData');
 const seedAll = async () => {
  await sequelize.sync({ force: true });
 
- await seedAuthors();
+//  await seedAuthors();
  await seedGenres();
- await seedUsers();
- await seedBooks();
+//  await seedUsers();
+//  await seedBooks();
 
  process.exit(0);
 };

@@ -8,6 +8,9 @@ const genreData = [
     name: "Science Fiction",
   },
   {
+    name: "Historical Fiction",
+  },
+  {
     name: "Fantasy",
   },
   {

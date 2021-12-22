@@ -12,14 +12,17 @@
           Condition:
           {{book.condition}}</p>
 
-        {{#if book.belongs_to_user}}
-          <div class="uk-margin">
-            <a class="btn btn-blue" href="/book/{{book.id}}">View My Book</a>
-          </div>
-        {{else}}
-          <div class="uk-margin">
-            <a class="btn" href="/book/{{book.id}}">Offer Trade</a>
-          </div>
+        {{#if ../loggedIn}}
+        foo
+          {{#if book.belongs_to_user}}
+            <div class="uk-margin">
+              <a class="btn btn-blue" href="/book/{{book.id}}">View My Book</a>
+            </div>
+          {{else}}
+            <div class="uk-margin">
+              <a class="btn" href="/book/{{book.id}}">Offer Trade</a>
+            </div>
+          {{/if}}
         {{/if}}
       </li>
     {{/if}}

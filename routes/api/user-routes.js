@@ -63,7 +63,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", withAuth, (req, res) => {
+router.post("/", (req, res) => {
   User.create(req.body)
     .then((dbData) => {
       req.session.save(() => {
