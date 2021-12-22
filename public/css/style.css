@@ -24,6 +24,11 @@ body {
     margin-top: 20px;
 }
 
+
+#getStarted{
+    height: 300px;
+}
+
 .uk-list>:nth-child(n+2) {
     margin-top: 0 !important;
 }
@@ -108,6 +113,10 @@ a.btn-yellow,
     outline: none;
     border: 0;
     font-size: 18px;
+}
+
+#signupcard{
+    margin-top: 50px;
 }
 
 a.btn,
