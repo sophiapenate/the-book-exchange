@@ -1,3 +1,11 @@
+const first_nameEl = document.querySelector("#first_name_input");
+const last_nameEl = document.querySelector("#last_name_input");
+const emailEl = document.querySelector("#email_input");
+const phoneEl = document.querySelector("#phone_input");
+const usernameEl = document.querySelector("#username_input");
+const passwordEl = document.querySelector("#password_input");
+const rentered_passwordEl = document.querySelector("#renter_password_input");
+
 async function signupFormHandler(e) {
   e.preventDefault();
 
@@ -55,6 +63,7 @@ async function signupFormHandler(e) {
 
     if (response.ok) {
       document.location.replace("/dashboard");
+      console.log(response)
     } else {
       response.json().then((data) => {
         console.log(data.errors[0].message);
@@ -64,6 +73,7 @@ async function signupFormHandler(e) {
 
   if (!first_name) {
     console.log("Please enter your first name.");
+    first_nameEl.setAttribute("class", "")
   }
 
   if (!last_name) {
