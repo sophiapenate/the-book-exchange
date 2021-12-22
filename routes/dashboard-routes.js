@@ -43,26 +43,26 @@ router.get("/", withAuth, (req, res) => {
       user.books.forEach((book) => (book.belongs_to_user = true));
 
       // get array of user's traded books
-      const traded_books = [];
+      user.traded_books = [];
       user.books.forEach((book) => {
         if (!book.is_available) {
-          traded_books.push(book);
+          user.traded_books.push(book);
         }
       });
 
       // get array of user's available books
-      const available_books = [];
+      user.available_books = [];
       user.books.forEach((book) => {
         if (book.is_available) {
-          available_books.push(book);
+          user.available_books.push(book);
         }
       });
+
+      console.log(user.available_books)
 
       // render dashboard and send data
       res.render("dashboard", {
         user,
-        traded_books,
-        available_books,
         loggedIn: req.session.loggedIn,
       });
     })
