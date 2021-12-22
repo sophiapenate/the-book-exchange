@@ -1,21 +1,39 @@
-<div id="signupcard" class="uk-flex uk-flex-center uk-width-auto">
-    <div class="uk-card uk-card-body uk-card-default">
-    <h3 class="uk-card-title">Login</h3>
-    <form class="signup-form uk-width-xlarge">
-        <div id="login" class="uk-flex uk-flex-between">
-        <div id="username" class="uk-width-1-2">
-            <label for="username">UserName</label><br>
-            <input type="text" id="first_name_input" maxlength="30" required />
-        </div>
-        <div id="password" class="uk-width-1-2">
-            <label for="password">Password</label><br>
-            <input type="text" id="last_name_input" maxlength="30" required />
-        </div>
-        </div>
+
+<div class="uk-container uk-margin-medium-top uk-margin-large-bottom">
+  <div class="uk-container-xsmall uk-align-center">
+    <h2>Login</h2>
+
+    <form class="login-form">
+      <div class="uk-margin">
+        <label for="username_input">Username</label>
+        <input
+          class="uk-input"
+          type="text"
+          id="username_input"
+          maxlength="30"
+          required
+        />
+      </div>
+      <div class="uk-margin">
+        <label for="password_input">Password</label>
+        <input
+          class="uk-input"
+          type="password"
+          id="password_input"
+          maxlength="255"
+          required
+        />
+      </div>
+      <div class="uk-margin">
+        <button class="btn" type="submit">Login</button>
+      </div>
     </form>
+
     <div>
-        <p>Don't have an account?</p>
-        <p><a href="/signup">Create an account!</a></p>
+      <p class="uk-margin-remove">Need an account?</p>
+      <p class="uk-margin-remove"><a href="/signup">Sign up instead</a></p>
     </div>
-    </div>
+  </div>
 </div>
+<script src="/js/login.js"></script>
+

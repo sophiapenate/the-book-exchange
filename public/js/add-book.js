@@ -54,34 +54,44 @@ async function addBookFormHandler(e) {
   const condition = document.querySelector("#condition_selection").value;
   const description = document.querySelector("#description_input").value;
 
-  // create book object
-  const bookObj = {
-    title,
-    author_id,
-    genre_id,
-    is_paperback,
-    condition,
-    is_available: 1,
-  };
-  if (description !== "") {
-    bookObj.description = description;
-  }
+  // validate inputs 
+  if(typeof author_first_name != 'string' 
+  || author_first_name.length < 2 ){
+        alert('First name must be a valid string with a minimum of 2 characters')
+  }else if(is_paperback != "1" && is_paperback != "0"){
+    alert("Paperback selection is invalid");
+  }else {
+    // create book object
+    const bookObj = {
+      title,
+      author_id,
+      genre_id,
+      is_paperback,
+      condition,
+      is_available: 1,
+    };
+    if (description !== "") {
+      bookObj.description = description;
+    }
 
-  // check if user filled out all required fields
-  if (title && author_id && genre_id && is_paperback && condition) {
-    const createBookResponse = await fetch("/api/books", {
-        method: "POST",
-        body: JSON.stringify(bookObj),
-        headers: { "Content-Type": "application/json" },
-      });
-  
-      if (createBookResponse.ok) {
-        document.location.replace("/dashboard");
-      } else {
-        createBookResponse.json().then((data) => {
-          console.log(data.errors[0].message);
+    // check if user filled out all required fields
+    if (title && author_id && genre_id && is_paperback && condition) {
+      const createBookResponse = await fetch("/api/books", {
+          method: "POST",
+          body: JSON.stringify(bookObj),
+          headers: { "Content-Type": "application/json" },
         });
-      }
+
+        if (createBookResponse.ok) {
+          createBookResponse.json().then((bookData) => {
+            document.location.replace('/book/' + bookData.id);
+          });
+        } else {
+          createBookResponse.json().then((data) => {
+            console.log(data.errors[0].message);
+          });
+        }
+    }
   }
 }
 

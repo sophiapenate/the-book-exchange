@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const { Genre, Book, Author, User } = require("../../models");
+const withAuth = require('../../utils/auth');
 
 router.get("/", (req, res) => {
   Genre.findAll({
@@ -50,7 +51,7 @@ router.get("/:id", (req, res) => {
     });
 });
 
-router.post("/", (req, res) => {
+router.post("/", withAuth, (req, res) => {
   Genre.create(req.body)
     .then((dbData) => {
       res.json(dbData);
@@ -61,7 +62,7 @@ router.post("/", (req, res) => {
     });
 });
 
-router.delete("/:id", (req, res) => {
+router.delete("/:id", withAuth, (req, res) => {
   Genre.destroy({
     where: {
       id: req.params.id,

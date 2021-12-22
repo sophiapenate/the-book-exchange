@@ -1,14 +1,28 @@
-<body>
-    <main>
-        <div class="uk-height-large uk-background-cover uk-light uk-flex" uk-parallax="bgy: -200" style="background-image: url('images/books_background.jpg');">
-            <div class="uk-flex uk-flex-middle uk-text-center" id="welcomeBox">
-                <div class="" id="getStarted">
-                    <p>Welcome to</p>
-                    <h1>The Book Exchange!</h1>
-                    <h3>The place to trade books and discover new reads</h3>
-                    <a href="./signup">Get Started</a>
-                    <a href="./login">Login</a>
-                </div>
-            </div>
-        </div>
-    </main>
+
+<div
+  class="uk-height-large uk-background-cover uk-light uk-flex"
+  style="background-image: url('images/books_background.jpg');"
+>
+  <div class="uk-flex uk-flex-middle uk-text-center" id="welcomeBox">
+    <div class="" id="getStarted">
+      <h1><span>Welcome to</span><br/>The Book Exchange!</h1>
+      <p>The place to trade books and discover new reads.</p>
+      {{#if loggedIn}}
+        <p><a class="btn btn-yellow" href="/dashboard">My Dashboard</a></p>
+      {{else}}
+      <p><a class="btn btn-yellow" href="/signup">Get Started</a></p>
+      <a href="/login">Login</a>
+      {{/if}}
+    </div>
+  </div>
+</div>
+
+<div class="uk-container uk-margin-large-top uk-margin-large-bottom uk-margin-large-left uk-margin-large-right">
+  <div class="uk-flex uk-flex-center uk-margin-medium-top">
+    <h2 class="uk-margin">Recently Added Books</h2>
+  </div>
+  <div class="uk-margin-large-top uk-margin-large-bottom">
+    {{> book-list books loggedIn=loggedIn}}
+  </div>
+</div>
+
